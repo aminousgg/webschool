@@ -659,7 +659,14 @@ pre code {
   /*margin-right: -15px;*/
   margin-left: -15px;
 }
-
+.logo_form{
+  width: 25px;
+  height: 25px;
+  margin-left: 4px;
+  margin-top: 5px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
 .logo{
   width: 25px;
   height: 25px;
@@ -2146,6 +2153,11 @@ select.form-control:focus::-ms-value {
   padding-right: 0;
   padding-left: 0;
 }
+.input-group-addon{
+  border-radius: 3px 0px 0px 3px;
+  border-color: #d2d6de;
+  background-color: #d2d6de;
+}
 
 .form-control-sm, .input-group-sm > .form-control,
 .input-group-sm > .input-group-prepend > .input-group-text,
@@ -2186,7 +2198,15 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 15px
+}
+.posisi_submit{
+  width: 100%;
+  padding-top: 20px;
+  padding-right: 25px;
 }
 
 .form-text {
@@ -2202,6 +2222,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   flex-wrap: wrap;
   margin-right: -5px;
   margin-left: -5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 15px;
 }
 
 .form-row > .col,
@@ -4628,6 +4651,14 @@ tbody.collapse.show {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 1.25rem;
+}
+.form-control-bio {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #d2d6de;
+}
+.form-group-bio {
+  margin-bottom: 15px;
 }
 
 .box{
