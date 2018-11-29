@@ -486,7 +486,7 @@ mark,
 }
 .bawahbio{
   background-color: #dfe2e4;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 
 .bawah1{
@@ -2204,7 +2204,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   padding-top: 15px
 }
 .posisi_submit{
-  width: 100%;
+  /* width: 100%; */
   padding-top: 20px;
   padding-right: 25px;
 }
@@ -4617,6 +4617,7 @@ tbody.collapse.show {
   min-height: 85vh;
   margin-top: -90px;
   margin-left: 0px;
+  padding-bottom: 25px;
 }
 .cardbio_right{
   position: absolute;

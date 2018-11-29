@@ -26,7 +26,9 @@
     </div>
   <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
     <div class="col-md-4">
-      <a href="<?php echo base_url() ?>web/logout"><img class="logo_user" src="<?php echo base_url() ?>assets/asset_form/user.png"></a>
+      <div class="float-right">
+        <a href="<?php echo base_url() ?>web/logout"><img class="logo_user" src="<?php echo base_url() ?>assets/asset_form/user.png"></a>
+      </div>
     </div>
   <!-- </div> -->
   </nav>
@@ -66,7 +68,7 @@
             <h3 class="mb-0">Biodata</h3>
           </div>
             <form>
-
+              <!-- Input nama -->
               <div class="form-row">
                 <div class="col">
                   <label for="exampleInputEmail1">Nama depan</label>
@@ -77,14 +79,14 @@
                   <input type="text" class="form-control" placeholder="Last name">
                 </div>
               </div>
-
+              <!-- Email -->
               <div class="form-group">
                 <fieldset disabled>
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $this->session->userdata('user')['nama'] ?>">
                 </fieldset>
               </div>
-
+              <!-- Input TTL -->
               <div class="form-row">
                 <div class="col">
                   <label for="exampleInputEmail1">Tempat Lahir</label>
@@ -100,12 +102,12 @@
                   </div>
                 </div>
               </div>
-              
+              <!-- Alamat -->
               <div class="form-group">
                 <label for="exampleInputEmail1">Alamat</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat">
               </div>
-
+              <!-- Input jenis kelamin, Asal sekolah, Tahun Lulus -->
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="inputState">Gender</label>
@@ -124,8 +126,48 @@
                 </div>
               </div>
 
+              <div class="form-row">
+                <div class="col-md-4">
+                  <label for="inputZip">Upload KK</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><img src="<?php echo base_url() ?>assets/asset_form/up.png" width="18px" height="18px"></span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+                <!--  -->
+                <div class="col-md-4">
+                  <label for="inputZip">Upload Ijazah</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><img src="<?php echo base_url() ?>assets/asset_form/up.png" width="18px" height="18px"></span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+                <!--  -->
+                <div class="col-md-4">
+                  <label for="inputZip">Upload SKHU</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><img src="<?php echo base_url() ?>assets/asset_form/up.png" width="18px" height="18px"></span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="posisi_submit">
-                <button type="submit" class="btn btn-primary float-right">Next</button>
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
               </div>
             </form>
         </div>
@@ -159,10 +201,6 @@
         <p>&copy; @nur.aminnudin 2018</p>
       </footer>
     <!-- </section> -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     
 
 </body>
