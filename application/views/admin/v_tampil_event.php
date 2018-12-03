@@ -1,3 +1,29 @@
+<?php 
+  if($this->session->flashdata('error')):
+      echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+      echo '<script>
+            swal({
+              type: "'.'error'.'",
+              title: "'.$this->session->flashdata('error').'",
+              text: "'.'Gagal ditambahkan'.'",
+              timer: 10000,
+              customClass: "'.'animated bounceIn'.'",
+            })
+            </script>';
+  endif;
+  if($this->session->flashdata('success')):
+      echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+      echo '<script>
+            swal({
+              type: "'.'success'.'",
+              title: "'.$this->session->flashdata('success').'",
+              text: "'.'Event telah ditambahkan'.'",
+              customClass: "'.'animated bounceIn'.'",
+            })
+            </script>';
+  endif;
+?>
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -47,16 +73,30 @@
                   <td><?php echo $u->nama_event ?></td>
                   <td><?php echo $u->tempat ?></td>
                   
-                  <td> <center>
+                  <td>
+                    <button onclick="window.location.href='<?php echo base_url().'Admin/event_edit/'.$u->id ?>' "> <img src="<?php echo base_url().'assets_lte/tool_icon/edit.png' ?>"> </button> 
 
-                    <a href="<?php echo base_url().'Admin/event_edit/'.$u->id ?>"> <img src="<?php echo base_url().'assets_lte/tool_icon/edit.png' ?>"> </a> | 
-
-                    <a href="<?php echo base_url().'Admin/event_hapus/'.$u->id ?>"> <img src="<?php echo base_url().'assets_lte/tool_icon/delete.png' ?>"> </a>
-
-                        <!-- <?php //echo anchor('admin/event_edit/'.$u->id,'Edit'); ?>
-                                          <?php //echo anchor('admin/event_hapus/'.$u->id,'Hapus'); ?> -->
-                    </center>
-                  </td>
+                    <button onclick="make()"> <img src="<?php echo base_url().'assets_lte/tool_icon/delete.png' ?>"> </button> 
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>
+                    <script>
+                      function make(){
+                        swal({
+                          title: 'Are you sure?',
+                          text: "Yakin akan menghapus ini?",
+                          type: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Ya',
+                          cancelButtonText: 'Batal'
+                        }).then((result) => {
+                            if (result.value) {
+                              window.location = "<?php echo base_url().'Admin/event_hapus/'.$u->id ?>";
+                            }
+                        })
+                      }
+                    </script>
+                    </td>
                 </tr>
                 <?php } ?>
                 </tbody>

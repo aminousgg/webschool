@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php echo $usr; ?></title>
+  <title><?php echo $judul; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
   
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/dist/css/AdminLTE.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/dist/css/skins/_all-skins.min.css">
@@ -45,6 +45,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.css" />
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

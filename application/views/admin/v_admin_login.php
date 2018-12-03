@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,16 +15,9 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/dist/css/AdminLTE.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/plugins/iCheck/square/blue.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -50,9 +42,10 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <?php if($report=="gagal"){ ?>
-                <p style="color: red; text-align: center;">Username/password salah</p>
-        <?php } ?>
+        <?php if($this->session->flashdata('error')):
+                echo '<p style="color: red; text-align: center;">Username/password salah</p>';
+              endif; 
+        ?>
 
         <div class="col-xs-4">
           <!-- <div class="checkbox icheck">

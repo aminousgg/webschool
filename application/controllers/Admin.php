@@ -37,7 +37,6 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_footer',$data);
 
 		}else{
-			$data['report']="belum";
 			$this->load->view('admin/v_admin_login',$data);
 		}
 	 	
@@ -67,9 +66,8 @@ class Admin extends CI_Controller{
 			redirect(base_url("Admin"));
  
 		}else{
-			$data['report']="gagal";
-			$this->load->view('admin/v_admin_login',$data);
-
+			$this->session->set_flashdata('error', 'gagal login');
+			$this->load->view('admin/v_admin_login');
 		}
 	}
 
@@ -108,7 +106,6 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_footer',$data);
 
 		}else{
-			$data['report']="belum";
 			$this->load->view('admin/v_admin_login',$data);
 		}
 
@@ -132,7 +129,6 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_tampil',$data);
 			$this->load->view('admin/v_footer',$data);
 		}else{
-			$data['report']="belum";
 			$this->load->view('admin/v_admin_login',$data);
 		}	
 		
@@ -160,12 +156,21 @@ class Admin extends CI_Controller{
 					'sumber'			=> $this->input->post('sumber'));
 					
 					
-				$this->db->insert('news',$data);
-				echo "<script>
-						alert('Berhasil ditambah');
-						document.location.href = 'news';
-					</script>";
-				//redirect('admin/news');
+				$result=$this->db->insert('news',$data);
+				//var_dump($this->db->insert('news',$data)); die;
+				if($result==true){
+					$this->session->set_flashdata('success', 'Berhasil Ditambah!');
+
+					// echo "<script>
+					// 		alert('Berhasil ditambah');
+					// 		document.location.href = 'news';
+					// 	</script>";
+					redirect(base_url('admin/news'));
+				}else{
+					$this->session->set_flashdata('error', 'Gagal Ditambah!');
+					redirect(base_url('admin/news'));
+				}
+				
 			}else{
 				$data['judul'] = 'tambah news';
 				// $this->template->load('admin/v_header','admin/v_tambah_news','admin/v_footer',$data);
@@ -179,8 +184,7 @@ class Admin extends CI_Controller{
 			}
 			
 		}else{
-			$data['report']="belum";
-			$this->load->view('admin/v_admin_login',$data);
+			$this->load->view('admin/v_admin_login');
 		}
 	}
 
@@ -199,50 +203,12 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_edit_news',$data);
 			$this->load->view('admin/v_footer',$data);
 		}else{
-			$data['report']="belum";
-			$this->load->view('admin/v_admin_login',$data);
+			$this->load->view('admin/v_admin_login');
 		}
 	}
 
 	public function news_edit_in()
 	{
-			// $config['upload_path'] 		= './assets/img';
-			// $config['allowed_types'] 	= 'jpg|jpeg|png|gif';
-
-			// // var_dump($_POST); die;
-			// $this->load->library('upload',$config);
-			// $this->upload->do_upload('gambar');
-			// $hasil 	= $this->upload->data();
-			// $id=$this->input->post('id');
-			// // var_dump($_FILES['userfile']['error']); die;
-
-			// if($_FILES['userfile']['error']===4){
-			// 	$data = array(
-			// 	'tanggal'			=> $this->input->post('tanggal'),
-			// 	'gambar'			=> $this->input->post('gambarlama'),
-			// 	'judul'				=> $this->input->post('judul'),
-			// 	'isi'				=> $this->input->post('isi'),
-			// 	'sumber'			=> $this->input->post('sumber'));
-			// }
-			// else{
-			// 	$data = array(
-			// 	'tanggal'			=> $this->input->post('tanggal'),
-			// 	'gambar'			=> $hasil['file_name'],
-			// 	'judul'				=> $this->input->post('judul'),
-			// 	'isi'				=> $this->input->post('isi'),
-			// 	'sumber'			=> $this->input->post('sumber'));
-			// }
-
-			
-				//var_dump($_FILES['gambar']['name']);die;
-				
-
-				// $config['upload_path'] 		= './assets/img/';
-				// $config['allowed_types'] 	= 'jpg|jpeg|png|gif';
-
-				// $this->load->library('upload',$config);
-				// $this->upload->do_upload('gambar');
-				// $hasil 	= $this->upload->data();
 				$id = $this->input->post('id');
 				
 				$data = array(
@@ -252,12 +218,27 @@ class Admin extends CI_Controller{
 					'sumber'	=> $this->input->post('sumber'));
 					
 				$this->db->where('id',$id);
-				$this->db->update('news',$data);
-				redirect('admin/news');
+				$result=$this->db->update('news',$data);
+				if($result==true){
+					$this->session->set_flashdata('success', 'Berhasil di edit');
+					redirect(base_url('admin/news'));
+				}else{
+					$this->session->set_flashdata('error', 'Gagal update');
+					redirect(base_url('admin/news'));
+				}
+
+				//redirect('admin/news');
 	}
 	public function news_hapus($id){
-		$this->db->delete('news',array('id'=>$id));
-		redirect('admin/news');
+		$result=$this->db->delete('news',array('id'=>$id));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Hapus');
+			redirect(base_url('admin/news'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal menghapus');
+			redirect(base_url('admin/news'));
+		}
+		//redirect('admin/news');
 	}
 
 	public function ubah_gambar()
@@ -276,9 +257,15 @@ class Admin extends CI_Controller{
 		$data = array(
 					'gambar'	=> $hasil['file_name']);
 		$this->db->where('id',$id);
-		$this->db->update('news',$data);
 
-		redirect('admin/news');
+		$result=$this->db->update('news',$data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Gambar telah diubah');
+			redirect(base_url('admin/news'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal mengubah');
+			redirect(base_url('admin/news'));
+		}
 
 	}
 //========================================================================================================================
@@ -299,7 +286,7 @@ class Admin extends CI_Controller{
 		
 		}else{
 			$data['report']="belum";
-			$this->load->view('admin/v_admin_login',$data);
+			$this->load->view('admin/v_admin_login');
 		}
 		
 	}
@@ -307,16 +294,6 @@ class Admin extends CI_Controller{
 		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
 
 			if(isset($_POST['tambah'])){
-				//var_dump($_FILES['gambar']['name']);die;
-				
-
-				// $config['upload_path'] 		= './assets/img/';
-				// $config['allowed_types'] 	= 'jpg|jpeg|png|gif';
-
-				// $this->load->library('upload',$config);
-				// $this->upload->do_upload('gambar');
-				// $hasil 	= $this->upload->data();
-				
 				$data = array(
 					'tanggal'			=> $this->input->post('tanggal'),
 					'penyelenggara'		=> $this->input->post('penyelenggara'),
@@ -324,8 +301,15 @@ class Admin extends CI_Controller{
 					'tempat'			=> $this->input->post('tempat'));
 					
 					
-				$this->db->insert('event',$data);
-				redirect('admin/event');
+				$result=$this->db->insert('event',$data);
+				if($result==true){
+					$this->session->set_flashdata('success', 'Berhasil Ditambah!');
+					redirect('admin/event');
+				}else{
+					$this->session->set_flashdata('error', 'Gagal Ditambah!');
+					redirect('admin/event');
+				}
+				
 			}else{
 				$data['judul'] = 'tambah event';
 				// $this->template->load('admin/v_header','admin/v_tambah_news','admin/v_footer',$data);
@@ -337,8 +321,7 @@ class Admin extends CI_Controller{
 			}
 		
 		}else{
-			$data['report']="belum";
-			$this->load->view('admin/v_admin_login',$data);
+			$this->load->view('admin/v_admin_login');
 		}
 
 			
@@ -346,7 +329,8 @@ class Admin extends CI_Controller{
 
 	public function event_edit()
 	{
-
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			
 			$this->load->model('M_admin');
 			$id=$this->uri->segment(3);
 			$data['record'] = $this->M_admin->edit_event($id)->row_array();
@@ -357,16 +341,14 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_aside',$data);
 			$this->load->view('admin/v_edit_event',$data);
 			$this->load->view('admin/v_footer',$data);
+
+		}else{
+			$this->load->view('admin/v_admin_login');
+		}
 	}
 
 	public function event_edit_in()
 	{
-			// $config['upload_path'] 		= './assets/img';
-			// $config['allowed_types'] 	= 'jpg|jpeg|png|gif';
-
-			// $this->load->library('upload',$config);
-			// $this->upload->do_upload('gambar');
-			// $hasil 	= $this->upload->data();
 			$id=$this->input->post('id');
 
 			$data = array(
@@ -375,52 +357,29 @@ class Admin extends CI_Controller{
 				'nama_event'		=> $this->input->post('nama_event'),
 				'tempat'			=> $this->input->post('tempat'));
 
-			/*if($_FILES['userfile']['error']===4){
-				$data = array(
-				'tanggal'			=> $this->input->post('tanggal'),
-				'gambar'			=> $this->input->post('gambarlama'),
-				'judul'				=> $this->input->post('judul'),
-				'isi'				=> $this->input->post('isi'),
-				'sumber'			=> $this->input->post('sumber'));
-			}
-			else{
-				$data = array(
-				'tanggal'			=> $this->input->post('tanggal'),
-				'gambar'			=> $hasil['file_name'],
-				'judul'				=> $this->input->post('judul'),
-				'isi'				=> $this->input->post('isi'),
-				'sumber'			=> $this->input->post('sumber'));
-			}*/
-
-
 			$this->db->where('id',$id);
-			$this->db->update('event',$data);
-			redirect('admin/event');
+			$result=$this->db->update('event',$data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Berhasil diupdate');
+				redirect('admin/event');
+			}else{
+				$this->session->set_flashdata('error', 'Gagal Mengubah!');
+				redirect('admin/event');
+			}
+			//redirect('admin/event');
 	}
 	public function event_hapus($id){
-		$this->db->delete('event',array('id'=>$id));
-		redirect('admin/event');
-	}
-
-//======================================================LOGIN===============================================
-	function login_admin10010(){
-		if($this->session->userdata('status') != "login"){
-			$this->load->view('v_login');
+		$result=$this->db->delete('event',array('id'=>$id));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Hapus');
+			redirect(base_url('admin/event'));
 		}else{
-			$where = array(
-					'username' => $this->session->userdata("nama"));
-		
-			$data['record'] = $this->M_login->cek_login("pendaftaran",$where)->row_array();
-			//var_dump($data['record']);die;
-
-			//$data['record'] = $this->M_admin->edit_new($id)->row_array();
-			$this->load->view('v_header',$data);
-			$this->load->view('v_display_person',$data);
-			$this->load->view('v_footer',$data);
+			$this->session->set_flashdata('error', 'Gagal menghapus');
+			redirect(base_url('admin/event'));
 		}
-		
+		//redirect('admin/event');
 	}
-//====================================================VIEW DISPLAY PENDAFTAR=================================
+//================================================VIEW DISPLAY PENDAFTAR=================================
 	public function pendaftaran(){
 		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
 
@@ -435,7 +394,6 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_footer',$data);
 		
 		}else{
-			$data['report']="belum";
 			$this->load->view('admin/v_admin_login');
 		}
 		
@@ -474,12 +432,26 @@ class Admin extends CI_Controller{
 				'kode_daftar'	=> $this->input->post('kode_daftar'));
 
 		$this->db->where('id',$id);
-		$this->db->update('pendaftaran',$data);
-		redirect('admin/pendaftaran');
+		$result=$this->db->update('pendaftaran',$data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Ubah');
+			redirect(base_url('admin/pendaftaran'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal Mengubah');
+			redirect(base_url('admin/pendaftaran'));
+		}
+		//redirect('admin/pendaftaran');
 	}
 	public function pendaftaran_hapus($id){
-		$this->db->delete('pendaftaran',array('id'=>$id));
-		redirect('admin/pendaftaran');
+		$result=$this->db->delete('pendaftaran',array('id'=>$id));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Hapus');
+			redirect(base_url('admin/pendaftaran'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal menghapus');
+			redirect(base_url('admin/pendaftaran'));
+		}
+		//redirect('admin/pendaftaran');
 	}
 
 
@@ -499,8 +471,7 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_footer',$data);
 		
 		}else{
-			$data['report']="belum";
-			$this->load->view('admin/v_admin_login',$data);
+			$this->load->view('admin/v_admin_login');
 			
 		}
 		
@@ -522,9 +493,7 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_footer',$data);
 		
 		}else{
-			$data['report']="belum";
-			$this->load->view('admin/v_admin_login',$data);
-			
+			$this->load->view('admin/v_admin_login');
 		}
 	}
 

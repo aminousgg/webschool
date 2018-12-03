@@ -8,19 +8,12 @@
   <link rel="icon" href="<?php echo base_url() ?>assets/asset_form/favicon.ico">
   <title>Biodata</title>
   <link href="<?php echo base_url() ?>assets/asset_form/dist/css/bootstrap.css" rel="stylesheet">
-  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-  <!-- <link href="dist/css/cssform.css" rel="stylesheet"> -->
-  <!-- <link href="form-validation.css" rel="stylesheet"> -->
-  <!-- Custom styles for this template -->
-    <!-- <link href="jumbotron.css" rel="stylesheet"> -->
 </head>
 <body>
   
 
   <!-- Header -->
   <nav class="navbar navbar-expand-lg navbar-light">
-
-
     <div class="col-md-8">
       <img class="logo" src="<?php echo base_url() ?>assets/asset_form/favicon.ico">
     </div>
@@ -33,34 +26,16 @@
   <!-- </div> -->
   </nav>
 
-    <!-- <div class="container py-5"> -->
-          <!-- <div class="row"> -->
-              <!-- <div class="col-md-12"> -->
-                  <!-- <div class="row"> -->
-                      
-
-
-                  <!-- </div> -->
-                  <!--/row-->
-
-              <!-- </div> -->
-              <!--/col-->
-          <!-- </div> -->
-           <!--/row-->
-        <!-- </div> -->
-
-    <!-- <section class="sss"> -->
-
-      <!-- card form -->
-      
+  <!-- banner atas -->
     <div class="row">
       <div class="col-md-12">
         <div class="atas">
-          <!-- <img src="<?php echo base_url() ?>assets/asset_form/bg_atas.jpg"> -->
+          <!-- isi image slide disini (OTW) -->
         </div>
       </div>
     </div>
 
+  <!-- isi content -->
     <div class="row">
       <div class="col-md-8 mx-auto">
         <div class="cardbio_left">
@@ -126,6 +101,7 @@
                 </div>
               </div>
 
+              <!-- form file upload -->
               <div class="form-row">
                 <div class="col-md-4">
                   <label for="inputZip">Upload KK</label>
@@ -176,29 +152,16 @@
         <div class="cardbio_right">
 
         </div> -->
-      </div>
     </div>  
         <!--/container-->
 
+  <!-- body background tengah -->
       <div class="bawahbio"></div>
-      <!-- <div class="bawah1">
-        <img src="<?php echo base_url() ?>assets/asset_form/icon-register.png">
-        <img src="<?php echo base_url() ?>assets/asset_form/logo_email.png">
-        <img src="<?php echo base_url() ?>assets/asset_form/if_login.png">
-        <div>
-          <p>Registrasi Menggunakan email yang aktif</p>
-        </div>
-        <div>
-          <p>Cek email anda untuk konfirmasi</p>
-        </div>
-        <div>
-          <p>Setelah konfirmasi, anda sudah dapat login dan melengkapi berkas-berkas</p>
-        </div>
-      </div> -->
-
+  <!-- footer -->
       <footer class="container">
         <br>
         <p>&copy; @nur.aminnudin 2018</p>
+        <br>
       </footer>
     <!-- </section> -->
     
