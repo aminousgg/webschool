@@ -108,12 +108,6 @@ class Admin extends CI_Controller{
 		}else{
 			$this->load->view('admin/v_admin_login',$data);
 		}
-
-		/*$data['judul'] = "Halaman admin";
-		$this->load->view('admin/v_header',$data);
-		//$this->load->view('admin/v_tampil',$data);
-		//$this->load->view('admin/v_tambah_news',$data);
-		$this->load->view('admin/v_footer',$data);*/
 	}
 //=====================================================CRUD BERITA=========================================================
 	 public function news(){

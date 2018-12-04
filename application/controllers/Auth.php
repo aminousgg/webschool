@@ -112,14 +112,14 @@ class Auth extends CI_Controller{
 		$where = array('token' => $token);
 		$data = $this->M_user->GetWhere('auth', $where);
 		$data = array('data' => $data);
-		$this->load->view('v_sukses_aktivasi');
+		$this->load->view('auth/v_sukses_aktivasi');
 	}
 
 	public function biodata(){
 		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
-			$this->load->view('v_bio');
+			$this->load->view('auth/v_bio');
 		}else{
-			$this->load->view('v_login');
+			$this->load->view('auth/v_login');
 		}
 	}
 }

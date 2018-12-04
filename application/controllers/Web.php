@@ -12,20 +12,13 @@ class Web extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->helper('security');
 		$this->load->library('user_agent');
-		// if ($this->session->userdata('username')=="") {
-		// 	redirect('login');
-		// }
-	
-		//  else if(!$this->session->userdata('level') =="admin"){
-		//  	redirect(base_url("menu/guru"));
-		//  }
 	}
 
 	function login(){
 		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
 			redirect(base_url('auth/biodata'));
 		}else{
-			$this->load->view('v_login');
+			$this->load->view('auth/v_login');
 		}
 	 	
 	}
@@ -84,7 +77,7 @@ class Web extends CI_Controller {
 	public function pendaftaran(){		
 		$data['judul'] = "Pendaftaran";
 		// $this->load->view('v_header',$data);
-		$this->load->view('v_pendaftaran',$data);
+		$this->load->view('auth/v_pendaftaran',$data);
 		// $this->load->view('v_footer',$data);
 	}
 
@@ -104,7 +97,7 @@ class Web extends CI_Controller {
 		}
 		else{
 
-			$this->load->view('v_login');
+			$this->load->view('auth/v_login');
 		}		
 			
 	}
@@ -247,46 +240,4 @@ class Web extends CI_Controller {
 		//var_dump($data['user']);die;
 	}
 
-	// public function admin(){		
-	// 	$data['judul'] = "Halaman admin";
-	// 	$this->load->view('admin/v_header',$data);
-	// 	//$this->load->view('admin/v_tabel',$data);
-	// 	$this->load->view('admin/v_footer',$data);
-	// }
-
-	
-	////guru
-
-
-	// public function guru(){		
-	// 	$data['judul'] = "Halaman guru";
-	// 	//$this->load->view('admin/v_header',$data);
-	// 	//$this->load->view('admin/v_tabel',$data);
-	// 	$this->load->view('admin/v_footer',$data);
-	// 	echo "aq guru";
-	// }
-
-
-	//public function tambah(){
-		// $data['judul'] = "Halaman tambah";
-		// $this->load->view('admin/v_header',$data);
-		// $this->load->view('admin/v_news',$data);
-		// $this->load->view('admin/v_footer',$data);
-	//}
-
-	/*function tambah_aksi(){
-		$nama = $this->input->post('nama');
-		$email = $this->input->post('email');
-		$subjek = $this->input->post('subjek');
-		$pesan = $this->input->post('pesan');
- 
-		$data = array(
-			'nama' => $nama,
-			'email' => $alamat,
-			'subjek' => $pekerjaan,
-			'pesan' => $pesan
-			);
-		$this->m_data->input_data($data,'user');
-		redirect('web/admin');
-	}*/
 }
