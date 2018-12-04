@@ -18,7 +18,9 @@ class Web extends CI_Controller {
 		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
 			redirect(base_url('auth/biodata'));
 		}else{
-			$this->load->view('auth/v_login');
+			$data['judul'] = "Login";
+			$this->load->view('auth/v_header_auth',$data);
+			$this->load->view('auth/v_login',$data);
 		}
 	 	
 	}
@@ -77,109 +79,13 @@ class Web extends CI_Controller {
 	public function pendaftaran(){		
 		$data['judul'] = "Pendaftaran";
 		// $this->load->view('v_header',$data);
+		$this->load->view('auth/v_header_auth',$data);
 		$this->load->view('auth/v_pendaftaran',$data);
 		// $this->load->view('v_footer',$data);
 	}
-
-	public function display_person(){
-		//var_dump($this->session->userdata('level')); die;
-		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
-			$where = array(
-					'username' => $this->session->userdata('user')["nama"]);
-		
-			$data['record'] = $this->M_login->cek_login("pendaftaran",$where)->row_array();
-
-			$data['judul'] = "Halaman daftar";
-			$this->load->view('v_header',$data);
-			$this->load->view('v_display_person',$data);
-			$this->load->view('v_footer',$data);
-
-		}
-		else{
-
-			$this->load->view('auth/v_login');
-		}		
-			
-	}
-
-	function daftar(){
-		if(isset($_POST['daftar'])){
-			
-			//var_dump($nama);
-			$usr = str_replace(' ', '', $this->input->post('nama'));
-			$username = strtolower($usr.strval(rand(10,100)));
-			$kode = rand(1000,9999);
-			if($this->input->post('password')!==$this->input->post('password1')){
-				echo "<script>
-						alert('password tdk sesuai');
-						document.location.href = 'pendaftaran';
-					</script>";
-
-					//redirect('web/pendaftaran');
-			}
-			else{
-
-				$data = array(
-				'nama'			=> $this->input->post('nama'),
-				'gender'		=> $this->input->post('gender'),
-				'tempat_lahir'	=> $this->input->post('tempat_lahir'),
-				'tgl_lahir' 	=> $this->input->post('tanggal'),
-				'alamat'		=> $this->input->post('alamat'),
-				'asal_sekolah'	=> $this->input->post('asal_sekolah'),
-				'tahun_lulus'	=> $this->input->post('tahun_lulus'),
-				'username'		=> $username,
-				'password'		=> md5($this->input->post('password')),
-				'kode_daftar'	=> $kode);
-				
-				//var_dump($data);die;
-				$this->db->insert('pendaftaran',$data);
-				//var_dump(mysqli_affected_rows($this->db->insert('pendaftaran',$data))); die;
-				//view_display($username,$this->input->post('password'));
-				echo "<script>
-						alert('Berhasil Mendaftar');
-					</script>";
-
-				$user_name = $username;
-				$password = $this->input->post('password');
-				$where = array(
-					'username' => $user_name,
-					'password' => md5($password)
-					);
-				$cek = $this->M_login->cek_login("pendaftaran",$where)->num_rows();
-				if($cek > 0){
-		 
-					$data_session = array(
-						'nama' 		=> $username,
-						'status' 	=> "login",
-						'level'		=> "user"
-						);
- 
-				$this->session->set_userdata('user',$data_session);
-		 
-					redirect(base_url("Display_person"));
-		 
-				}else{
-					echo "<script>
-						alert('password/username salah');
-						document.location.href = 'pendaftaran';
-					</script>";
-				}	
-			}
-			//redirect('web/pendaftaran');
-		}else{
-			// $data['judul'] = 'daftar';
-			// // $this->template->load('admin/v_header','admin/v_tambah_news','admin/v_footer',$data);
-			// $this->load->view('v_header',$data);
-			// $this->load->view('v_contact',$data);
-			// $this->load->view('v_footer',$data);
-			echo "Data tak masuk";
-		}
-	}
-
 	
 	//==============================================
 	
-
 	public function about(){		
 		$data['judul'] = "About";
 		$this->load->view('v_header',$data);

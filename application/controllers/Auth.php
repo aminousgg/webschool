@@ -9,7 +9,6 @@ class Auth extends CI_Controller{
 		$this->load->library('form_validation');
 		$this->load->helper('security');
 		$this->load->library('user_agent');
- 
 	}
  
 	public function prosesregister()
@@ -25,10 +24,7 @@ class Auth extends CI_Controller{
 
 		if($this->form_validation->run() == FALSE)
 		{
-			$data['judul'] = "Pendaftaran";
-			// $this->load->view('v_header',$data);
-			$this->load->view('v_pendaftaran',$data);
-			// $this->load->view('v_footer',$data);
+			redirect(base_url('web/login'));
 		}
 		else
 		{
@@ -81,45 +77,37 @@ class Auth extends CI_Controller{
 		}
 	}
 
-	//===================login
-	// public function login()
-	// {
-	// 	$this->load->view('auth/Login');
-	// }
-	// public function proseslogin()
-	// {		
-	// 	$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
-	// 	$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|max_length[15]|xss_clean');
-	// 	$this->form_validation->set_message('required', 'Mohon Maaf! Harap mengisi kolom <b>%s</b>.');
-	// 	$this->form_validation->set_message('min_length', 'Mohon Maaf! <b>%s</b> minimal %s karakter.');
-	// 	$this->form_validation->set_message('max_length', 'Mohon Maaf! <b>%s</b> maksimal %s karakter.');
-	// 	$email=$this->input->post('email');
-	// 	$password=$this->input->post('password');
-		
-	// 	if($this->form_validation->run() == FALSE)
-	// 	{
-	// 		$this->load->view('auth/login');
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->M_user->loginUser();
-	// 	}		
-	// }
-
 	public function aktivasi($token)
 	{
 		$this->M_user->aktivasi($token);
 		$where = array('token' => $token);
 		$data = $this->M_user->GetWhere('auth', $where);
 		$data = array('data' => $data);
-		$this->load->view('auth/v_sukses_aktivasi');
+		$data['judul'] = "Aktivasi";
+		$this->load->view('auth/v_header_auth',$data);
+		$this->load->view('auth/v_sukses_aktivasi',$data);
 	}
 
 	public function biodata(){
 		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
-			$this->load->view('auth/v_bio');
+			$data['judul'] = "Bio";
+			$this->load->view('auth/v_header_auth',$data);
+			$this->load->view('auth/v_bio',$data);
 		}else{
-			$this->load->view('auth/v_login');
+			$data['judul'] = "Login";
+			$this->load->view('auth/v_header_auth',$data);
+			$this->load->view('auth/v_login',$data);
+		}
+	}
+	public function berkas(){
+		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
+			$data['judul'] = "Bio";
+			$this->load->view('auth/v_header_auth',$data);
+			$this->load->view('auth/v_bio_akademik',$data);
+		}else{
+			$data['judul'] = "Login";
+			$this->load->view('auth/v_header_auth',$data);
+			$this->load->view('auth/v_login',$data);
 		}
 	}
 }

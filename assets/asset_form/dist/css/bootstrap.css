@@ -668,11 +668,11 @@ pre code {
   margin-bottom: 4px;
 }
 .logo{
-  width: 25px;
-  height: 25px;
+  width: 34px;
+  height: 34px;
   margin-right: 15px;
   margin-top: 3px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 .logo_div{}
 .logo_user{
@@ -4544,6 +4544,38 @@ tbody.collapse.show {
 .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
   color: #fff;
 }
+.menubio {
+  border-radius: 25px 0px 0px 25px;
+  border-style: solid;
+  border-width: 2px 0px 2px 2px;
+  padding: 5px 15px 7px 15px;
+  background-color: #429FFD;
+}
+.menubio b {
+  color: #fff;
+}
+.menubio:hover{
+  background-color: rgba(180, 175, 175, 0.5);
+}
+.menubio b:hover{
+  color: #000;
+}
+
+.menubio1 {
+  border-radius: 0px 25px 25px 0px;
+  border: 2px solid #000;
+  padding: 5px 15px 7px 15px;
+  background-color: #429FFD;
+}
+.menubio1 b {
+  color: #fff;
+}
+.menubio1:hover{
+  background-color: rgba(180, 175, 175, 0.5);
+}
+.menubio1 b:hover{
+  color: #000;
+}
 
 .card {
   position: absolute;
@@ -4614,7 +4646,7 @@ tbody.collapse.show {
   border: 1px solid rgba(0, 0, 0, 0.125);
   box-shadow: 0 5px 10px rgba(0,0,0,.4);
   min-width: 95%;
-  min-height: 85vh;
+  /* min-height: 85vh; */
   margin-top: -90px;
   margin-left: 0px;
   padding-bottom: 25px;

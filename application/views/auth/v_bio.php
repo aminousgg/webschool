@@ -1,30 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="<?php echo base_url() ?>assets/asset_form/favicon.ico">
-  <title>Biodata</title>
-  <link href="<?php echo base_url() ?>assets/asset_form/dist/css/bootstrap.css" rel="stylesheet">
-</head>
-<body>
-  
-
-  <!-- Header -->
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="col-md-8">
-      <img class="logo" src="<?php echo base_url() ?>assets/asset_form/favicon.ico">
-    </div>
-  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-    <div class="col-md-4">
-      <div class="float-right">
-        <a href="<?php echo base_url() ?>web/logout"><img class="logo_user" src="<?php echo base_url() ?>assets/asset_form/user.png"></a>
-      </div>
-    </div>
-  <!-- </div> -->
-  </nav>
 
   <!-- banner atas -->
     <div class="row">
@@ -61,6 +34,20 @@
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $this->session->userdata('user')['nama'] ?>">
                 </fieldset>
               </div>
+              <!-- Gender NISN -->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputState">Gender</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputCity">NISN</label>
+                  <input type="text" class="form-control" id="inputCity">
+                </div>
+              </div>
               <!-- Input TTL -->
               <div class="form-row">
                 <div class="col">
@@ -82,68 +69,11 @@
                 <label for="exampleInputEmail1">Alamat</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat">
               </div>
-              <!-- Input jenis kelamin, Asal sekolah, Tahun Lulus -->
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="inputState">Gender</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputCity">Asal Sekolah</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-2">
-                  <label for="inputZip">Tahun lulus</label>
-                  <input type="text" class="form-control" id="inputZip">
-                </div>
-              </div>
+              
 
               <!-- form file upload -->
-              <div class="form-row">
-                <div class="col-md-4">
-                  <label for="inputZip">Upload KK</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><img src="<?php echo base_url() ?>assets/asset_form/up.png" width="18px" height="18px"></span>
-                    </div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="col-md-4">
-                  <label for="inputZip">Upload Ijazah</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><img src="<?php echo base_url() ?>assets/asset_form/up.png" width="18px" height="18px"></span>
-                    </div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="col-md-4">
-                  <label for="inputZip">Upload SKHU</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><img src="<?php echo base_url() ?>assets/asset_form/up.png" width="18px" height="18px"></span>
-                    </div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="posisi_submit">
-                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                <button type="submit" class="btn btn-primary float-right">Next</button>
               </div>
             </form>
         </div>

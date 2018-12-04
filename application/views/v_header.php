@@ -60,26 +60,6 @@
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
-			<!-- <div class="upper-menu"> -->
-				<!-- <div class="container"> -->
-					<!-- <div class="row">
-						<div class="col-xs-4">
-							<p>Welcome to Eskwela</p>
-						</div>
-						<div class="col-xs-6 col-md-push-2 text-right">
-							<p>
-								<ul class="colorlib-social-icons">
-									<li><a href="#"><i class="icon-twitter"></i></a></li>
-									<li><a href="#"><i class="icon-facebook"></i></a></li>
-									<li><a href="#"><i class="icon-linkedin"></i></a></li>
-									<li><a href="#"><i class="icon-dribbble"></i></a></li>
-								</ul>
-							</p>
-							<p class="btn-apply"><a href="#">Apply Now</a></p>
-						</div>
-					</div> -->
-				<!-- </div> -->
-			<!-- </div> -->
 			<div class="top-menu">
 				<div class="container">
 					<div class="row">
@@ -127,23 +107,9 @@
 								<?php } ?>
 
 								<li class="btn-cta"><a href="<?php echo base_url().'web/display_person' ?>"><span>
-									<?php 
-									if(strlen($this->session->userdata('user')["nama"]) > 0){
-										echo $this->session->userdata('user')["nama"]; 
-									}else{
-										echo "Login";
-									}
-
-									?>
+									Login
 
 								</span></a></li>
-								<?php 
-									if(strlen($this->session->userdata('user')["nama"]) > 0){
-										echo "<li>"."<a href=".'"'.base_url()."web/logout".'">'.'Logout </a></li>';
-									}else{
-										
-									}
-								 ?>
 							</ul>
 						</div>
 					</div>
