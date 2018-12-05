@@ -12,77 +12,97 @@
     </div>
 
     <div class="row"></div>
-      <div class="col-md-6 mx-auto">
 
           <!-- form card login -->
-         <div class="card rounded-0">
-             <div class="card-header">
-                 <h3 class="mb-0">Daftar</h3>
-             </div>
-             <?php 
-                if($this->session->flashdata('error')):
-                    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
-                    echo '<script>
-                            swal({
-                                 type: "'.'error'.'",
-                                 title: "'.$this->session->flashdata('error').'",
-                                 text: "'.'Mohon Maaf! Hanya Email berdomain .ac.id dan .edu yang bisa Mendaftar'.'",
-                                 timer: 10000,
-                                 customClass: "'.'animated bounceIn'.'",
-                                 })
-                          </script>';
-                endif;
-                if($this->session->flashdata('success')):
-                    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
-                    echo '<script>
-                            swal({
-                                type: "'.'success'.'",
-                                title: "'.$this->session->flashdata('success').'",
-                                text: "'.'Silahkan Cek Email Untuk Aktivasi Akun'.'",
-                                customClass: "'.'animated bounceIn'.'",
-                                })
-                          </script>';
-                endif;
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <div class="row">
+              <div class="col-md-8 mx-auto">
+                <div class="card rounded-0">
+                    <div class="col-md-12">
+                    <div class="card-header">
+                        <h3 class="mb-0">Daftar</h3>
+                    </div>
+                    </div>
+                    <?php 
+                        if($this->session->flashdata('error')):
+                            echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+                            echo '<script>
+                                    swal({
+                                        type: "'.'error'.'",
+                                        title: "'.$this->session->flashdata('error').'",
+                                        text: "'.'Mohon Maaf! Hanya Email berdomain .ac.id dan .edu yang bisa Mendaftar'.'",
+                                        timer: 10000,
+                                        customClass: "'.'animated bounceIn'.'",
+                                        })
+                                  </script>';
+                        endif;
+                        if($this->session->flashdata('success')):
+                            echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+                            echo '<script>
+                                    swal({
+                                        type: "'.'success'.'",
+                                        title: "'.$this->session->flashdata('success').'",
+                                        text: "'.'Silahkan Cek Email Untuk Aktivasi Akun'.'",
+                                        customClass: "'.'animated bounceIn'.'",
+                                        })
+                                  </script>';
+                        endif;
 
-              ?>
-             <div class="card-body">
-                 <div class="box">
-                    <?php echo form_open('auth/prosesregister', array('id' => 'commentForm')); ?>
-                      <div>
-                        <?php 
-                        $data = array('type' => 'text', 'id' => 'email', 'name' => 'email', 'value' => set_value('email'), 'required' => 'true', 'oninvalid' => 'this.setCustomValidity('."'Email Tidak Boleh Kosong'".')', 'oninput' => 'setCustomValidity('."''".')'); 
-                        echo form_input($data);
-                        ?>
-                        <?php echo form_error('email', '<p class="text-danger">', '</p>'); ?>
-                        <!-- <input type="text" name="email" required="email tidak valid"> -->
-                        <label id="a">Email</label>
+                      ?>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                        <div class="box">
+                            <?php echo form_open('auth/prosesregister', array('id' => 'commentForm')); ?>
+                              <div>
+                                <?php 
+                                $data = array('type' => 'text', 'id' => 'email', 'name' => 'email', 'value' => set_value('email'), 'required' => 'true', 'oninvalid' => 'this.setCustomValidity('."'Email Tidak Boleh Kosong'".')', 'oninput' => 'setCustomValidity('."''".')'); 
+                                echo form_input($data);
+                                ?>
+                                <?php echo form_error('email', '<p class="text-danger">', '</p>'); ?>
+                                <!-- <input type="text" name="email" required="email tidak valid"> -->
+                                <label id="a">Email</label>
+                              </div>
+                              <div>
+                                <?php 
+                                $data = array('type' => 'password', 'id' => 'password', 'name' => 'password', 'value' => set_value('password'), 'required' => 'true', 'oninvalid' => 'this.setCustomValidity('."'password Tidak Boleh Kosong'".')', 'oninput' => 'setCustomValidity('."''".')'); 
+                                echo form_input($data);
+                                ?>
+                                <?php echo form_error('password', '<p class="text-danger">', '</p>'); ?>
+                                <!-- <input type="password" name="password" required=""> -->
+                                <label id="b">Password</label>
+                              </div>
+                              <div>
+                                <?php 
+                                $data = array('type' => 'password', 'id' => 'password1', 'name' => 'password1', 'value' => set_value('password1'), 'required' => 'true', 'oninvalid' => 'this.setCustomValidity('."'password tidak valid'".')', 'oninput' => 'setCustomValidity('."''".')'); 
+                                echo form_input($data);
+                                ?>
+                                <?php echo form_error('password', '<p class="text-danger">', '</p>'); ?>
+                                <!-- <input type="password" name="password1" required=""> -->
+                                <label id="c">Confirm Password</label>
+                              </div>
+                              <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Sign up</button>
+                            <?php echo form_close(); ?>
+                          </div>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <?php 
-                        $data = array('type' => 'password', 'id' => 'password', 'name' => 'password', 'value' => set_value('password'), 'required' => 'true', 'oninvalid' => 'this.setCustomValidity('."'password Tidak Boleh Kosong'".')', 'oninput' => 'setCustomValidity('."''".')'); 
-                        echo form_input($data);
-                        ?>
-                        <?php echo form_error('password', '<p class="text-danger">', '</p>'); ?>
-                        <!-- <input type="password" name="password" required=""> -->
-                        <label id="b">Password</label>
+                      <div class="row">
+                        <div class="col-md-8 mx-auto">
+                          <p align="center" style="margin-bottom: 10px;">
+                          Sudah punya akun? <a href="<?php echo base_url().'web/login' ?>"><b>Login!</b></a>
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <?php 
-                        $data = array('type' => 'password', 'id' => 'password1', 'name' => 'password1', 'value' => set_value('password1'), 'required' => 'true', 'oninvalid' => 'this.setCustomValidity('."'password tidak valid'".')', 'oninput' => 'setCustomValidity('."''".')'); 
-                        echo form_input($data);
-                        ?>
-                        <?php echo form_error('password', '<p class="text-danger">', '</p>'); ?>
-                        <!-- <input type="password" name="password1" required=""> -->
-                        <label id="c">Confirm Password</label>
-                      </div>
-                      <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Sign up</button>
-                    <?php echo form_close(); ?>
-                  </div>
-             </div>
-             <!--/card-->
-         </div>
+                    </div>
+                    <!--/card-->
+                </div>
+              </div>
+            </div>
+          </div>
         <!-- /form card login -->
-      </div>
+        </div>
         
         <!--/container-->
 

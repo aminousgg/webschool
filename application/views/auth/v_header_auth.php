@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="<?php echo base_url() ?>assets/asset_form/favicon.ico">
-  <title>Form Daftar</title>
+  <link rel="icon" type="image/gif" href="<?php echo base_url() ?>assets/asset_form/favicon.png">
+  <title><?php echo $judul; ?></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.css" />
   <link href="<?php echo base_url() ?>assets/asset_form/dist/css/bootstrap.css" rel="stylesheet">
   <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
@@ -69,7 +69,7 @@
         <div class="row">
             <img class="logo" src="<?php echo base_url() ?>assets/asset_form/favicon.ico">
             <div class="menubio">
-            <b> Biodata </b>
+            <b> Biodata</b>
             </div>
             <div class="menubio1">
             <b> Berkas </b>

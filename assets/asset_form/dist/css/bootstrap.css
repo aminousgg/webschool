@@ -4550,17 +4550,32 @@ tbody.collapse.show {
   border-width: 2px 0px 2px 2px;
   padding: 5px 15px 7px 15px;
   background-color: #429FFD;
+  cursor: pointer;
 }
 .menubio b {
   color: #fff;
 }
 .menubio:hover{
   background-color: rgba(180, 175, 175, 0.5);
+  transition: all 1.5s;
 }
 .menubio b:hover{
   color: #000;
+  transition: all 1.5s;
 }
-
+.button_a {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  display: none;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.button_a b:hover{
+  color: #000;
+  transition: all 1.5s;
+}
 .menubio1 {
   border-radius: 0px 25px 25px 0px;
   border: 2px solid #000;
@@ -4571,10 +4586,12 @@ tbody.collapse.show {
   color: #fff;
 }
 .menubio1:hover{
-  background-color: rgba(180, 175, 175, 0.5);
+  background-color: rgba(230, 163, 163, 0.5);
+  transition: all 1.5s;
 }
 .menubio1 b:hover{
   color: #000;
+  transition: all 1.5s;
 }
 
 .card {
@@ -4595,8 +4612,9 @@ tbody.collapse.show {
   border: 1px solid rgba(0,0,0,.2);
   box-shadow: 0 5px 10px rgba(0,0,0,.4);
   width: 560px;
-  margin-top: -190px;
-  margin-left: 30px;
+  margin-top: -170px;
+  align-content: center;
+  /* margin-left: 30px; */
 }
 
 .cardlogin {
@@ -4728,6 +4746,9 @@ tbody.collapse.show {
   outline: none;
   border: none;
   border-bottom: 2px solid #999;
+}
+.box input:focus{
+  border-bottom: 2px solid #007bff;
 }
 
 .box form div{
