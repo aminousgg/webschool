@@ -5,6 +5,7 @@ class Auth extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('M_user');
+		$this->load->model('M_login');
 		$this->load->helper('url');
 		$this->load->library('form_validation');
 		$this->load->helper('security');
@@ -91,19 +92,59 @@ class Auth extends CI_Controller{
 	public function biodata(){
 		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
 			$data['judul'] = "Bio";
-			$this->load->view('auth/v_header_auth',$data);
-			$this->load->view('auth/v_bio',$data);
+			$email=$this->session->userdata('user')['nama'];
+			$cek=$this->M_login->cek_login("biodata",array('email'=>$email))->num_rows();
+			if($cek>0){
+				echo "otw";
+				$this->load->view('auth/v_header_auth',$data);
+				//redirect(base_url('auth/display_bio'));
+			}else{
+				$this->load->view('auth/v_header_auth',$data);
+				$this->load->view('auth/v_bio',$data);
+			}
+			
 		}else{
 			$data['judul'] = "Login";
 			$this->load->view('auth/v_header_auth',$data);
 			$this->load->view('auth/v_login',$data);
 		}
 	}
+	public function bio_in(){
+		$nama=$this->input->post('nama', TRUE).' '.$this->input->post('nama1', TRUE);
+		$data = array(
+			'nama'	=>	$nama,
+			'email'	=>	$this->session->userdata('user')['nama'],
+			'gender'=>	$this->input->post('gender', TRUE),
+			'nisn'	=>	$this->input->post('nisn', TRUE),
+			'tempat_lahir' => $this->input->post('tempat_lahir', TRUE),
+			'tgl_lahir' => $this->input->post('tgl_lahir', TRUE),
+			'alamat'=>	$this->input->post('alamat', TRUE),
+		);
+		$result=$this->M_user->Insert_auth('biodata', $data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+			redirect(base_url('auth/berkas'));
+		}else{
+			$this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+			redirect(base_url('auth/biodata'));
+		}
+	}
+
 	public function berkas(){
 		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
 			$data['judul'] = "Bio";
-			$this->load->view('auth/v_header_auth',$data);
-			$this->load->view('auth/v_bio_akademik',$data);
+			$email=$this->session->userdata('user')['nama'];
+			$cek=$this->M_login->cek_login("berkas",array('email'=>$email))->num_rows();
+
+			if($cek>0){
+				echo "otw";
+				$this->load->view('auth/v_header_auth',$data);
+				//redirect(base_url('auth/display_berkas'));
+			}else{
+				$this->load->view('auth/v_header_auth',$data);
+				$this->load->view('auth/v_bio_akademik',$data);
+			}
+			
 		}else{
 			$data['judul'] = "Login";
 			$this->load->view('auth/v_header_auth',$data);

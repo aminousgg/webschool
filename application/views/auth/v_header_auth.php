@@ -68,12 +68,21 @@
         <div class="col-md-8">
         <div class="row">
             <img class="logo" src="<?php echo base_url() ?>assets/asset_form/favicon.ico">
-            <div class="menubio">
+            <div id="thumb0" onclick="link('a')" class="menubio">
             <b> Biodata</b>
             </div>
-            <div class="menubio1">
+            <div id="thumb0" onclick="link('b')" class="menubio1">
             <b> Berkas </b>
             </div>
+            <script>
+            function link(i) {
+                if(i=='a'){
+                    window.location.href='<?php echo base_url() ?>auth/biodata'
+                }else{
+                    window.location.href='<?php echo base_url() ?>auth/berkas'
+                }
+            }
+            </script>
         </div>
         </div>
     <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->

@@ -4581,6 +4581,7 @@ tbody.collapse.show {
   border: 2px solid #000;
   padding: 5px 15px 7px 15px;
   background-color: #429FFD;
+  cursor: pointer;
 }
 .menubio1 b {
   color: #fff;

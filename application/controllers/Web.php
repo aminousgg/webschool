@@ -45,7 +45,23 @@ class Web extends CI_Controller {
 				);
 	
 			$this->session->set_userdata('user',$data_session);
-			redirect(base_url('auth/biodata'));
+
+			$cek_berkas = $this->M_login->cek_login("berkas",array('email'=>$email))->num_rows();
+			$cek_bio = $this->M_login->cek_login("biodata",array('email'=>$email))->num_rows();
+
+			if($cek_berkas>0 && $cek_bio>0){
+				redirect(base_url('auth/display_bio'));
+			}
+			elseif($cek_berkas<=0 && $cek_bio>0){
+				redirect(base_url('auth/berkas'));
+			}
+			elseif($cek_berkas>0 && $cek_bio<=0){
+				redirect(base_url('auth/biodata'));
+			}
+			elseif($cek_berkas<=0 && $cek_bio<=0){
+				redirect(base_url('auth/biodata'));
+			}
+			
 			
 			}else{
 				$this->session->set_flashdata('belumaktif', 'Gagal Login!');

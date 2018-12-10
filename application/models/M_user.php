@@ -44,7 +44,12 @@ class M_user extends CI_Model{
 	public function GetWhere($table, $data){
         $res=$this->db->get_where($table, $data);
         return $res->result_array();
-    }
+	}
+	
+	public function Insert_bio($table,$data){
+		$res = $this->db->insert($table, $data); 
+        return $res;
+	}
 
 }
 
