@@ -132,7 +132,7 @@ class Auth extends CI_Controller{
 			$this->session->set_flashdata('success', 'Data berhasil ditambahkan');
 			redirect(base_url('auth/berkas'));
 		}else{
-			$this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+			$this->session->set_flashdata('error', 'Gagal ditambahkan');
 			redirect(base_url('auth/biodata'));
 		}
 	}
@@ -142,6 +142,28 @@ class Auth extends CI_Controller{
 		$data['record'] = $this->M_user->edit_bio($email)->row_array();
 		$this->load->view('auth/v_header_auth',$data);
 		$this->load->view('auth/edit_bio',$data);
+	}
+	public function edit_bio_in(){
+		$email=$this->session->userdata('user')['nama'];
+		$nama=$this->input->post('nama', TRUE).' '.$this->input->post('nama1', TRUE);
+		$data = array(
+			'nama'	=>	$nama,
+			'email'	=>	$this->session->userdata('user')['nama'],
+			'gender'=>	$this->input->post('gender', TRUE),
+			'nisn'	=>	$this->input->post('nisn', TRUE),
+			'tempat_lahir' => $this->input->post('tempat_lahir', TRUE),
+			'tgl_lahir' => $this->input->post('tgl_lahir', TRUE),
+			'alamat'=>	$this->input->post('alamat', TRUE),
+		);
+		$this->db->where('email',$email);
+		$result=$this->db->update('biodata',$data);
+		if($result==true){
+			$this->session->set_flashdata('success_ubah', 'Berhasil Di Ubah');
+			redirect(base_url('auth/berkas'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal Mengubah');
+			redirect(base_url('auth/biodata'));
+		}
 	}
 
 

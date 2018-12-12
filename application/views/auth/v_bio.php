@@ -17,7 +17,7 @@
               swal({
                   type: "'.'success'.'",
                   title: "'.$this->session->flashdata('success').'",
-                  text: "'.'Silahkan Cek Email Untuk Aktivasi Akun'.'",
+                  text: "'.'Berhasil'.'",
                   customClass: "'.'animated bounceIn'.'",
                   })
             </script>';

@@ -37,8 +37,10 @@
               </div>
               <!-- Email -->
               <div class="form-group">
+              <fieldset disabled>
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $this->session->userdata('user')['nama'] ?>">
+              </fieldset>
               </div>
               <!-- Gender NISN -->
               <div class="form-row">

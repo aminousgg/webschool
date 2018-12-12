@@ -1,4 +1,28 @@
-
+<?php 
+  if($this->session->flashdata('error')):
+      echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+      echo '<script>
+              swal({
+                  type: "'.'error'.'",
+                  title: "'.$this->session->flashdata('error').'",
+                  text: "'.'mohon mengisi data dg benar'.'",
+                  timer: 10000,
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+  if($this->session->flashdata('success_ubah')):
+      echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+      echo '<script>
+              swal({
+                  type: "'.'success'.'",
+                  title: "'.$this->session->flashdata('success').'",
+                  text: "'.'Anda telah Mengubah'.'",
+                  customClass: "'.'animated bounceIn'.'",
+                  })
+            </script>';
+  endif;
+ ?>
   <!-- banner atas -->
     <div class="row">
       <div class="col-md-12">
