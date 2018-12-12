@@ -19,11 +19,13 @@
             <div class="row">
               <div class="col-md-8 mx-auto">
                 <div class="card rounded-0">
+                  <div class="row">
                     <div class="col-md-12">
-                    <div class="card-header">
+                      <div class="card-header">
                         <h3 class="mb-0">Daftar</h3>
+                      </div>
                     </div>
-                    </div>
+                  </div>
                     <?php 
                         if($this->session->flashdata('error')):
                             echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
@@ -36,6 +38,18 @@
                                         customClass: "'.'animated bounceIn'.'",
                                         })
                                   </script>';
+                        endif;
+                        if($this->session->flashdata('double_data')):
+                          echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+                          echo '<script>
+                                  swal({
+                                      type: "'.'error'.'",
+                                      title: "'.$this->session->flashdata('double_data').'",
+                                      text: "'.'Email sudah didaftarkan'.'",
+                                      timer: 10000,
+                                      customClass: "'.'animated bounceIn'.'",
+                                      })
+                                </script>';
                         endif;
                         if($this->session->flashdata('success')):
                             echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';

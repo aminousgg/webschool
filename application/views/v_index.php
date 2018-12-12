@@ -19,7 +19,7 @@
 							</div>
 							<div class="one-third color-3 animate-box">
 								<div class="desc2">
-									<h3>Tentang Sekolah Eskwela</h3>
+									<h3>Tentang Sekolah Basahf</h3>
 									<p><a href="<?php echo base_url().'web/about' ?>" class="view-more">View More</a></p>
 								</div>
 							</div>
@@ -27,7 +27,7 @@
 					</div>
 					<div class="col-md-8">
 						<div class="about-desc animate-box">
-							<h2>Selamat Datang di Eskwela</h2>
+							<h2>Selamat Datang di Basahf</h2>
 							<p>SMK Negeri Eskwela merupakan salah satu Sekolah Menengah Kejuruan di Kota Jakarta Timur, DKI Jakarta. Dengan SK Menteri Pendidikan dan Kebudayaan RI tertanggal 20 Maret 1967 Nomor 62/B-21 KID berdirilah SMEA 6, saat itu belum memiliki Gedung sendiri, masih meminjam Gedung TK di Mampang.</p>
 							<div class="fancy-collapse-panel">
 	                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

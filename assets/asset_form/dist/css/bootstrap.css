@@ -4546,7 +4546,7 @@ tbody.collapse.show {
 }
 .menubio {
   border-radius: 25px 0px 0px 25px;
-  border-style: solid;
+  border: 2px solid #429FFD;
   border-width: 2px 0px 2px 2px;
   padding: 5px 15px 7px 15px;
   background-color: #429FFD;
@@ -4578,7 +4578,7 @@ tbody.collapse.show {
 }
 .menubio1 {
   border-radius: 0px 25px 25px 0px;
-  border: 2px solid #000;
+  border: 2px solid #429FFD;
   padding: 5px 15px 7px 15px;
   background-color: #429FFD;
   cursor: pointer;

@@ -37,7 +37,7 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_footer',$data);
 
 		}else{
-			$this->load->view('admin/v_admin_login',$data);
+			$this->load->view('admin/v_admin_login');
 		}
 	 	
 	}
@@ -106,7 +106,7 @@ class Admin extends CI_Controller{
 			$this->load->view('admin/v_footer',$data);
 
 		}else{
-			$this->load->view('admin/v_admin_login',$data);
+			$this->load->view('admin/v_admin_login');
 		}
 	}
 //=====================================================CRUD BERITA=========================================================

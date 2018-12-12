@@ -50,7 +50,10 @@ class M_user extends CI_Model{
 		$res = $this->db->insert($table, $data); 
         return $res;
 	}
+	public function edit_bio($email){
 
+		return $this->db->get_where('biodata',array('email'=>$email));
+	}
 }
 
 

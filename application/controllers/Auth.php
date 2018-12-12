@@ -25,13 +25,18 @@ class Auth extends CI_Controller{
 
 		if($this->form_validation->run() == FALSE)
 		{
-			redirect(base_url('web/login'));
+			$email=$this->input->post('email', TRUE);
+			$cek=$this->M_login->cek_login("auth",array('email'=>$email))->num_rows();
+			if($cek>0){
+				
+				$this->session->set_flashdata('double_data', 'Gagal Mendaftar!');
+				redirect(base_url('web/pendaftaran'));
+			}
 		}
 		else
 		{
 			if(preg_match("/gmail.com/", $this->input->post('email', TRUE)) || preg_match("/yahoo.com/", $this->input->post('email', TRUE)) ) 
 			{
-				
 				date_default_timezone_set("Asia/Jakarta");
 				$data = array(
 					'email' => $this->input->post('email', TRUE),
@@ -95,8 +100,10 @@ class Auth extends CI_Controller{
 			$email=$this->session->userdata('user')['nama'];
 			$cek=$this->M_login->cek_login("biodata",array('email'=>$email))->num_rows();
 			if($cek>0){
-				echo "otw";
+				// echo "otw";
+				$data['record'] = $this->M_user->edit_bio($email)->row_array();
 				$this->load->view('auth/v_header_auth',$data);
+				$this->load->view('auth/display_bio',$data);
 				//redirect(base_url('auth/display_bio'));
 			}else{
 				$this->load->view('auth/v_header_auth',$data);
@@ -129,6 +136,14 @@ class Auth extends CI_Controller{
 			redirect(base_url('auth/biodata'));
 		}
 	}
+	public function edit_bio(){
+		$email=$this->session->userdata('user')['nama'];
+		$data['judul']="Bio";
+		$data['record'] = $this->M_user->edit_bio($email)->row_array();
+		$this->load->view('auth/v_header_auth',$data);
+		$this->load->view('auth/edit_bio',$data);
+	}
+
 
 	public function berkas(){
 		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user"){
@@ -139,7 +154,7 @@ class Auth extends CI_Controller{
 			if($cek>0){
 				echo "otw";
 				$this->load->view('auth/v_header_auth',$data);
-				//redirect(base_url('auth/display_berkas'));
+				// tampilan display person
 			}else{
 				$this->load->view('auth/v_header_auth',$data);
 				$this->load->view('auth/v_bio_akademik',$data);
