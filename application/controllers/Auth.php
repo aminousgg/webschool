@@ -172,10 +172,11 @@ class Auth extends CI_Controller{
 			$data['judul'] = "Bio";
 			$email=$this->session->userdata('user')['nama'];
 			$cek=$this->M_login->cek_login("berkas",array('email'=>$email))->num_rows();
-
+			$data['record'] = $this->M_user->edit_berkas($email)->row_array();
 			if($cek>0){
-				echo "otw";
+				// echo "otw";
 				$this->load->view('auth/v_header_auth',$data);
+				$this->load->view('auth/display_berkas',$data);
 				// tampilan display person
 			}else{
 				$this->load->view('auth/v_header_auth',$data);
@@ -187,5 +188,77 @@ class Auth extends CI_Controller{
 			$this->load->view('auth/v_header_auth',$data);
 			$this->load->view('auth/v_login',$data);
 		}
+	}
+	public function tambah_berkas(){
+		if($this->session->userdata('user')["status"] == "login" && $this->session->userdata('user')["level"]=="user")
+		{
+			$email=$this->session->userdata('user')['nama'];
+			$ambil = $this->M_user->edit_bio($email)->row_array();
+
+				
+				$a = $this->upload_kk($_POST);
+				$b = $this->upload_ijasah($_POST);
+				$c = $this->upload_skhu($_POST);
+				
+				$data = array(
+					'nisn'			=> $ambil["nisn"],
+					'email'			=> $ambil["email"],
+					'sekolah'		=> $this->input->post('asal_sekolah'),
+					'tahun_lulus'	=> $this->input->post('tahun_lulus'),
+					'kk'			=> $a['file_name'],
+					'ijasah'		=> $b['file_name'],
+					'skhu'			=> $c['file_name']
+				);
+				//var_dump($data); die;
+				$result=$this->db->insert('berkas',$data);
+				if($result==true){
+					$this->session->set_flashdata('success', 'Berhasil Ditambah!');
+					redirect(base_url('auth/berkas'));
+				}else{
+					$this->session->set_flashdata('error', 'Gagal Ditambah!');
+					redirect(base_url('auth/berkas'));
+				}
+			
+		}
+	}
+	public function upload_kk($post){
+		$_POST=$post;
+		$config['upload_path'] 		= './berkas/pdf/kk';
+		$config['allowed_types'] 	= 'pdf';
+		$config['overwrite'] 		= TRUE;
+		$config['file_name']		= "KK_".$_FILES['kk']['name'];
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		$this->upload->do_upload('kk');
+		$detail_kk = $this->upload->data();
+		unset($config);
+		return $detail_kk;
+	}
+	public function upload_ijasah($post){
+		$_POST=$post;
+		
+		$config['upload_path'] 	= './berkas/pdf/ijasah';
+		$config['allowed_types'] 	= 'pdf';
+		$config['overwrite'] 		= TRUE;
+		$config['file_name']		= "IJASAH_".$_FILES['kk']['name'];
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		$this->upload->do_upload('ijasah');
+		$detail_ijasah = $this->upload->data();
+		unset($config);
+		return $detail_ijasah;
+	}
+	public function upload_skhu($post){
+		$_POST=$post;
+		$config['upload_path']	 = './berkas/pdf/skhu/';
+		$config['allowed_types'] = 'pdf';
+		$config['overwrite'] 	 = TRUE;
+		$config['file_name']	 = "SKHU_".$_FILES['kk']['name'];
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		$this->upload->do_upload('skhu');
+		$detail_skhu = $this->upload->data();
+		unset($config);
+		return $detail_skhu;
 	}
 }

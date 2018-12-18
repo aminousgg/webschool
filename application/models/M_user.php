@@ -51,8 +51,10 @@ class M_user extends CI_Model{
         return $res;
 	}
 	public function edit_bio($email){
-
 		return $this->db->get_where('biodata',array('email'=>$email));
+	}
+	public function edit_berkas($email){
+		return $this->db->get_where('berkas',array('email'=>$email));
 	}
 }
 
