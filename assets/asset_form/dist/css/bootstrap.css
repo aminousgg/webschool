@@ -2210,6 +2210,38 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   padding-right: 25px;
 }
 
+.boxfileupload{
+  margin-top: 10px;
+  width: 56vh;
+  height: 26vh;
+  border-radius: 3px;
+  padding-top: 8px;
+  padding-left: 8px;
+  border: 1px solid #D3D3D3;
+}
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=4);
+  opacity: 0;
+  outline: none;   
+  cursor: inherit;
+  display: block;
+  background: #D3D3D3;
+}
+#gambar{
+  margin-top: 5px;
+}
+
 .form-text {
   display: block;
   margin-top: 0.25rem;
