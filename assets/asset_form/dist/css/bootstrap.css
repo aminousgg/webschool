@@ -312,6 +312,7 @@ fieldset {
   padding: 0;
   margin: 0;
   border: 0;
+  width: 100%;
 }
 
 legend {
@@ -2199,8 +2200,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .form-group {
   margin-bottom: 0rem;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 15px
 }
 .posisi_submit{
@@ -2222,9 +2223,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   flex-wrap: wrap;
   margin-right: -5px;
   margin-left: -5px;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  /* padding-top: 15px; */
 }
 
 .form-row > .col,
@@ -4725,6 +4726,20 @@ tbody.collapse.show {
   /*border: 1px solid rgba(0,0,0,.1);
   box-shadow: 0 5px 10px rgba(0,0,0,.2);*/
   /*border-radius: 2px;*/
+}
+
+.boxfile{
+  position: relative;
+  width: 100%;
+  margin-left: 15px;
+  margin-top: 10px;
+  padding-right: 12px;
+}
+.boxfile2{
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 0px;
 }
 
 .boxbio1{

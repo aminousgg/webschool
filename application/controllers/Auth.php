@@ -199,7 +199,7 @@ class Auth extends CI_Controller{
 				$a = $this->upload_kk($_POST);
 				$b = $this->upload_ijasah($_POST);
 				$c = $this->upload_skhu($_POST);
-				
+				//var_dump($_POST); die;
 				$data = array(
 					'nisn'			=> $ambil["nisn"],
 					'email'			=> $ambil["email"],

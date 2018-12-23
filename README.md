@@ -1,4 +1,6 @@
-# ci-restserver
-Check the recent version at https://github.com/chriskacerguis/codeigniter-restserver
+Sistem Informasi Pendaftaran Sekolah (Prototype)
+Verify Email
+Framwork CodeIgniter
 
-My alternate version https://github.com/ardisaurus/old-rest-ci
+@nur.amin
+Galgil

@@ -50,7 +50,7 @@ class Web extends CI_Controller {
 			$cek_bio = $this->M_login->cek_login("biodata",array('email'=>$email))->num_rows();
 
 			if($cek_berkas>0 && $cek_bio>0){
-				redirect(base_url('auth/display_bio'));
+				redirect(base_url('auth/biodata'));
 			}
 			elseif($cek_berkas<=0 && $cek_bio>0){
 				redirect(base_url('auth/berkas'));

@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Smk Negeri Basahf</title>
+	<title>Smk Negeri Prototype</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -64,7 +64,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="<?php echo base_url().'web/index' ?>">Basahf</a></div>
+							<div id="colorlib-logo"><a href="<?php echo base_url().'web/index' ?>">Prototype</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>

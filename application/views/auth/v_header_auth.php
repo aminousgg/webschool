@@ -14,6 +14,7 @@
   <!-- <link href="form-validation.css" rel="stylesheet"> -->
   <!-- Custom styles for this template -->
     <!-- <link href="jumbotron.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets_lte/dist/css/AdminLTE.css"> -->
 </head>
 <body class="bg-light">
 

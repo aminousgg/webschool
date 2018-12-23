@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <title>Admin Eswela</title>
+  <title>Admin Prototype</title>
   <!-- Tell the browser to be responsive to screen width -->
   
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets_lte/sweetalert-master/src/sweetalert.css">
