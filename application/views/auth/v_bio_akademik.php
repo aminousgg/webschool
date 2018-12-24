@@ -1,11 +1,11 @@
 <?php 
-  if($this->session->flashdata('error')):
+  if($this->session->flashdata('error1')):
       echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
       echo '<script>
               swal({
                   type: "'.'error'.'",
                   title: "'.$this->session->flashdata('error').'",
-                  text: "'.'mohon mengisi data dg benar'.'",
+                  text: "'.'extensi file salah'.'",
                   timer: 10000,
                   customClass: "'.'animated bounceIn'.'",
                   })
@@ -176,19 +176,34 @@
       bs_input_file();
     });
 
+    // checking file
     function filePreview(input) {
       if(input.files&&input.files[0]){
-        var reader = new FileReader();
-        reader.onload=function(e){
-          $('#uploadForm + img').remove();
-          $('#gambar').html('<img src="'+e.target.result+'" width="100px" height="100px" />')
+        var tipefile=/.\.(gif|jpg|png|jpeg)$/i;
+        var namafile=input.files[0]['name'];
+        var ukuran=input.files[0]['size'];
+
+        if (!tipefile.test(namafile)){
+          $('#gambar').html('Only images are allowed!');
         }
-        reader.readAsDataURL(input.files[0]);
+        else if (ukuran > 500000){
+          $('#gambar').html('Your file is too big! Max allowed size is: 500KB');
+        }
+        else{
+          var reader = new FileReader();
+          reader.onload=function(e){
+            $('#uploadForm + img').remove();
+            $('#gambar').html('<img src="'+e.target.result+'" width="100px" height="100px" />')
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+
       }
     }
     $('#file').change(function(){
       filePreview(this);
     });
+
   </script>
   
 

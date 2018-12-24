@@ -194,11 +194,26 @@ class Auth extends CI_Controller{
 		{
 			$email=$this->session->userdata('user')['nama'];
 			$ambil = $this->M_user->edit_bio($email)->row_array();
+			
+			$kk = $_FILES['kk']['name'];
+			$ext_kk = pathinfo($kk, PATHINFO_EXTENSION);
+			//===
+			$ijasah = $_FILES['ijasah']['name'];
+			$ext_ijasah = pathinfo($ijasah, PATHINFO_EXTENSION);
+			//==
+			$skhu = $_FILES['skhu']['name'];
+			$ext_skhu = pathinfo($skhu, PATHINFO_EXTENSION);
+			//==
+			$pas_foto = $_FILES['file']['name'];
+			$ext_foto = pathinfo($pas_foto, PATHINFO_EXTENSION);
 
-				
+
+			if( ($ext_kk=='pdf'&&$ext_ijasah=='pdf'&&$ext_skhu=='pdf')&&($ext_foto=='jpg'||$ext_foto=='png'||$ext_foto=='jpeg') )
+			{
 				$a = $this->upload_kk($_POST);
 				$b = $this->upload_ijasah($_POST);
 				$c = $this->upload_skhu($_POST);
+				$d = $this->upload_foto($_POST);
 				//var_dump($_POST); die;
 				$data = array(
 					'nisn'			=> $ambil["nisn"],
@@ -207,7 +222,8 @@ class Auth extends CI_Controller{
 					'tahun_lulus'	=> $this->input->post('tahun_lulus'),
 					'kk'			=> $a['file_name'],
 					'ijasah'		=> $b['file_name'],
-					'skhu'			=> $c['file_name']
+					'skhu'			=> $c['file_name'],
+					'pas_foto'		=> $d['file_name']
 				);
 				//var_dump($data); die;
 				$result=$this->db->insert('berkas',$data);
@@ -218,6 +234,11 @@ class Auth extends CI_Controller{
 					$this->session->set_flashdata('error', 'Gagal Ditambah!');
 					redirect(base_url('auth/berkas'));
 				}
+
+			}else{
+				$this->session->set_flashdata('error1', 'Gagal Ditambah!');
+				redirect(base_url('auth/berkas'));
+			}
 			
 		}
 	}
@@ -225,7 +246,7 @@ class Auth extends CI_Controller{
 		$_POST=$post;
 		$config['upload_path'] 		= './berkas/pdf/kk';
 		$config['allowed_types'] 	= 'pdf';
-		$config['overwrite'] 		= TRUE;
+		// $config['overwrite'] 		= TRUE;
 		$config['file_name']		= "KK_".$_FILES['kk']['name'];
 		$this->load->library('upload',$config);
 		$this->upload->initialize($config);
@@ -239,8 +260,8 @@ class Auth extends CI_Controller{
 		
 		$config['upload_path'] 	= './berkas/pdf/ijasah';
 		$config['allowed_types'] 	= 'pdf';
-		$config['overwrite'] 		= TRUE;
-		$config['file_name']		= "IJASAH_".$_FILES['kk']['name'];
+		// $config['overwrite'] 		= TRUE;
+		$config['file_name']		= "IJASAH_".$_FILES['ijasah']['name'];
 		$this->load->library('upload',$config);
 		$this->upload->initialize($config);
 		$this->upload->do_upload('ijasah');
@@ -252,13 +273,25 @@ class Auth extends CI_Controller{
 		$_POST=$post;
 		$config['upload_path']	 = './berkas/pdf/skhu/';
 		$config['allowed_types'] = 'pdf';
-		$config['overwrite'] 	 = TRUE;
-		$config['file_name']	 = "SKHU_".$_FILES['kk']['name'];
+		// $config['overwrite'] 	 = TRUE;
+		$config['file_name']	 = "SKHU_".$_FILES['skhu']['name'];
 		$this->load->library('upload',$config);
 		$this->upload->initialize($config);
 		$this->upload->do_upload('skhu');
 		$detail_skhu = $this->upload->data();
 		unset($config);
 		return $detail_skhu;
+	}
+	public function upload_foto($post){
+		$_POST=$post;
+		$config['upload_path']	 = './berkas/pas_foto';
+		$config['allowed_types'] = 'jpg|jpeg|png';
+		$config['file_name']	 = "foto_".$_FILES['file']['name'];
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		$this->upload->do_upload('file');
+		$detail_foto = $this->upload->data();
+		unset($config);
+		return $detail_foto;
 	}
 }

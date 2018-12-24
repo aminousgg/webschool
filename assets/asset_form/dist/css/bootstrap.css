@@ -639,7 +639,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 100%;
   }
 }
 
@@ -2240,6 +2240,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 #gambar{
   margin-top: 5px;
+  color: #bd2130;
 }
 
 .form-text {
@@ -3979,6 +3980,8 @@ tbody.collapse.show {
   list-style: none;
 }
 
+
+
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
@@ -4066,7 +4069,7 @@ tbody.collapse.show {
 .navbar {
   position: fixed;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   overflow: hidden;
   background-color: rgba(255,255,255,0.5);
   display: -webkit-box;
@@ -4114,7 +4117,7 @@ tbody.collapse.show {
   align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .navbar-brand {
@@ -4584,6 +4587,7 @@ tbody.collapse.show {
   padding: 5px 15px 7px 15px;
   background-color: #429FFD;
   cursor: pointer;
+  
 }
 .menubio b {
   color: #fff;
@@ -4615,6 +4619,7 @@ tbody.collapse.show {
   padding: 5px 15px 7px 15px;
   background-color: #429FFD;
   cursor: pointer;
+  
 }
 .menubio1 b {
   color: #fff;
@@ -7821,6 +7826,9 @@ button.bg-dark:focus {
   white-space: normal;
   -webkit-clip-path: none;
   clip-path: none;
+}
+.w-10 {
+  width: 10% !important;
 }
 
 .w-25 {
