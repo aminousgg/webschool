@@ -129,7 +129,7 @@ class Auth extends CI_Controller{
 		);
 		$result=$this->M_user->Insert_auth('biodata', $data);
 		if($result==true){
-			$this->session->set_flashdata('success', 'Data berhasil ditambahkan');
+			$this->session->set_flashdata('success_bio', 'Data berhasil ditambahkan');
 			redirect(base_url('auth/berkas'));
 		}else{
 			$this->session->set_flashdata('error', 'Gagal ditambahkan');

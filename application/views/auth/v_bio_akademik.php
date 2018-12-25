@@ -22,6 +22,29 @@
                   })
             </script>';
   endif;
+  if($this->session->flashdata('success_bio')):
+    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+    echo '<script>
+            swal({
+                type: "'.'success'.'",
+                title: "'.$this->session->flashdata('success').'",
+                text: "'.'Data telas ditambahkan'.'",
+                customClass: "'.'animated bounceIn'.'",
+                })
+          </script>';
+  endif;
+  if($this->session->flashdata('success_ubah')):
+    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
+    echo '<script>
+            swal({
+                type: "'.'success'.'",
+                title: "'.$this->session->flashdata('success').'",
+                text: "'.'Update success'.'",
+                customClass: "'.'animated bounceIn'.'",
+                })
+          </script>';
+  endif;
+
  ?>
  
   <!-- banner atas -->

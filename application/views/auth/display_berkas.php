@@ -29,7 +29,7 @@
       <div class="col-md-12">
         <div class="atas">
           <!-- isi image slide disini (OTW) -->
-          asdfsafsdfd
+          
         </div>
       </div>
   </div>
@@ -74,89 +74,65 @@
               <div class="col-md-6">
                 <div class="boxfile">
                   <!-- COMPONENT START -->
-                  <label for="inputZip">Upload KK</label>
-                  <div class="input-group input-file" name="kk">
-                    <span class="input-group-btn">
-                          <button class="btn btn-default btn-choose" type="button">Choose</button>
-                    </span>
-                      <input type="text" class="form-control" placeholder='Choose a file...' />
-                    <span class="input-group-btn">
-                      <button class="btn btn-warning btn-reset" type="button">Reset</button>
-                    </span>
-                  </div>
+                  <fieldset disabled>
+                    <label for="inputZip">Upload KK</label>
+                    <div class="input-group input-file" name="kk">
+                      <span class="input-group-btn">
+                            <button class="btn btn-default btn-choose" type="button">Choose</button>
+                      </span>
+                        <input type="text" class="form-control" value="<?php echo $record['kk'] ?>" placeholder='Choose a file...' />
+                      <span class="input-group-btn">
+                        <button class="btn btn-warning btn-reset" type="button">Reset</button>
+                      </span>
+                    </div>
+                  </fieldset>
                   <!-- COMPONENT END -->
                   <!--  -->
                   <!-- COMPONENT START -->
+                  <fieldset disabled>
                     <label for="inputZip">Upload ijasah</label>
                     <div class="input-group input-file" name="ijasah">
                       <span class="input-group-btn">
                             <button class="btn btn-default btn-choose" type="button">Choose</button>
                       </span>
-                        <input type="text" class="form-control" placeholder='Choose a file...' />
+                        <input type="text" class="form-control" value="<?php echo $record['ijasah'] ?>" placeholder='Choose a file...' />
                       <span class="input-group-btn">
                         <button class="btn btn-warning btn-reset" type="button">Reset</button>
                       </span>
                     </div>
+                  </fieldset>
                   <!-- COMPONENT END -->
                   <!--  -->
                   <!-- COMPONENT START -->
+                  <fieldset disabled>
                     <label for="inputZip">Upload SKHU</label>
                     <div class="input-group input-file" name="skhu">
                       <span class="input-group-btn">
                         <button class="btn btn-default btn-choose" type="button">Choose</button>
                       </span>
-                        <input type="text" class="form-control" placeholder='Choose a file...' />
+                        <input type="text" class="form-control" value="<?php echo $record['skhu'] ?>" placeholder='Choose a file...' />
                       <span class="input-group-btn">
                         <button class="btn btn-warning btn-reset" type="button">Reset</button>
                       </span>
                     </div>
+                  </fieldset>
                   <!-- COMPONENT END --> 
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="boxfile2">
-
-                  <div class="box box-widget widget-user">
-                   <!-- Add the bg color to the header using any of the bg-* classes -->
-                   <div class="widget-user-header bg-aqua-active">
-                     <h3 class="widget-user-username">Alexander Pierce</h3>
-                     <h5 class="widget-user-desc">Founder &amp; CEO</h5>
-                   </div>
-                   <div class="widget-user-image">
-                     <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
-                   </div>
-                   <div class="box-footer">
-                     <div class="row">
-                       <div class="col-sm-4 border-right">
-                         <div class="description-block">
-                           <h5 class="description-header">3,200</h5>
-                           <span class="description-text">SALES</span>
-                         </div>
-                         <!-- /.description-block -->
-                       </div>
-                       <!-- /.col -->
-                       <div class="col-sm-4 border-right">
-                         <div class="description-block">
-                           <h5 class="description-header">13,000</h5>
-                           <span class="description-text">FOLLOWERS</span>
-                         </div>
-                         <!-- /.description-block -->
-                       </div>
-                       <!-- /.col -->
-                       <div class="col-sm-4">
-                         <div class="description-block">
-                           <h5 class="description-header">35</h5>
-                           <span class="description-text">PRODUCTS</span>
-                         </div>
-                         <!-- /.description-block -->
-                       </div>
-                       <!-- /.col -->
-                     </div>
-                     <!-- /.row -->
-                   </div>
+                <label style="margin-top: 10px;">Kode</label>
+                <div class="boxprofile">
+                  <div class="sicard">
+                      <div class="firstinfo"><img src="<?php echo base_url() ?>berkas/pas_foto/<?php echo $record['pas_foto'] ?>" />
+                          <div class="profileinfo">
+                              <h1>Smk Prototype</h1>
+                              <h3>Nama</h3>
+                              <p class="bio">9999</p>
+                          </div>
+                      </div>
                   </div>
-                  
                 </div>
+
               </div>
             </div>  
 
