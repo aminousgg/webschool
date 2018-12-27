@@ -1,7 +1,7 @@
   <!-- banner atas -->
   <div class="row">
       <div class="col-md-12">
-        <div class="atas">
+        <div class="atas" style="background-image: url(<?php echo base_url() ?>assets/background/img_bg_1.jpg);">
           <!-- isi image slide disini (OTW) -->
         </div>
       </div>
