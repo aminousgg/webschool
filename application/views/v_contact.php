@@ -1,4 +1,3 @@
-		
 		<div id="colorlib-contact">
 			<div class="container">
 				<div class="row">
@@ -65,4 +64,3 @@
 				</div>
 			</div>
 		</div>
-		<div id="map" class="colorlib-map"></div>

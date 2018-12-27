@@ -14,7 +14,7 @@
 								<span class="icon"><i class="flaticon-open-book"></i></span>
 								<div class="desc">
 									<h3>Cek Kode Pendaftaran</h3>
-									<p><a href="<?php echo base_url().'web/display_person' ?>" class="view-more">View More</a></p>
+									<p><a href="<?php echo base_url().'web/login' ?>" class="view-more">View More</a></p>
 								</div>
 							</div>
 							<div class="one-third color-3 animate-box">
@@ -140,7 +140,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(<?php echo base_url() ?>assets/images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+		<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(<?php echo base_url() ?>assets/images/bawahan.jpg);" data-stellar-background-ratio="0.5">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row">

@@ -1,9 +1,9 @@
-		<div id="colorlib-subscribe" class="subs-img" style="background-image: url(<?php echo base_url() ?>assets/images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+		<div id="colorlib-subscribe" class="subs-img" style="background-image: url(<?php echo base_url() ?>assets/images/bawahan.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-						<h2>Subscribe Newsletter</h2>
+						<h2>Smk Prototype</h2>
 						<p>Subscribe our newsletter and get latest update</p>
 					</div>
 				</div>
