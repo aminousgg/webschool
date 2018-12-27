@@ -1,29 +1,4 @@
-<?php 
-  if($this->session->flashdata('error')):
-      echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
-      echo '<script>
-              swal({
-                  type: "'.'error'.'",
-                  title: "'.$this->session->flashdata('error').'",
-                  text: "'.'mohon mengisi data dg benar'.'",
-                  timer: 10000,
-                  customClass: "'.'animated bounceIn'.'",
-                  })
-            </script>';
-  endif;
-  if($this->session->flashdata('success')):
-      echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>';
-      echo '<script>
-              swal({
-                  type: "'.'success'.'",
-                  title: "'.$this->session->flashdata('success').'",
-                  text: "'.'Anda telah Mengubah'.'",
-                  customClass: "'.'animated bounceIn'.'",
-                  })
-            </script>';
-  endif;
- ?>
- 
+
   <!-- banner atas -->
   <div class="row">
       <div class="col-md-12">
@@ -42,19 +17,16 @@
             <h3 class="mb-0">Data Akademik</h3>
           </div>
           <!-- $attributes = array('class' => 'email', 'id' => 'myform'); -->
-          <?php echo form_open(''); ?>
+          <?php echo form_open_multipart('auth/edit_berkas_in'); ?>
               <!--  -->
             <div class="row">
               <div class="col-md-12">
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                  <fieldset disabled>
                     <label for="inputCity">Asal Sekolah</label>
                     <input type="text" value="<?php echo $record['sekolah'] ?>" name="asal_sekolah" class="form-control" id="inputCity">
-                  </fieldset>
                   </div>
                   <div class="form-group col-md-6">
-                  <fieldset disabled>
                     <label for="inputState">Tahun Lulus</label>
                     <select id="inputState" name="tahun_lulus" class="form-control">
                       <option value="<?php $record['tahun_lulus']?>"><?php echo $record['tahun_lulus']?></option>
@@ -64,7 +36,6 @@
                       <option value=2017>2017</option>
                       <option value=2018>2018</option>
                     </select>
-                  </fieldset>
                   </div>
                 </div>
               </div>
@@ -74,48 +45,42 @@
               <div class="col-md-6">
                 <div class="boxfile">
                   <!-- COMPONENT START -->
-                  <fieldset disabled>
-                    <label for="inputZip">KK *pdf</label>
+                    <label for="inputZip">Upload KK *pdf</label>
                     <div class="input-group input-file" name="kk">
                       <span class="input-group-btn">
                             <button class="btn btn-default btn-choose" type="button">Choose</button>
                       </span>
-                        <input type="text" class="form-control" value="<?php echo $record['kk'] ?>" placeholder='Choose a file...' />
+                        <input type="text" name="kk" class="form-control" value="<?php echo $record['kk'] ?>" placeholder='Choose a file...' />
                       <span class="input-group-btn">
                         <button class="btn btn-warning btn-reset" type="button">Reset</button>
                       </span>
                     </div>
-                  </fieldset>
                   <!-- COMPONENT END -->
                   <!--  -->
                   <!-- COMPONENT START -->
-                  <fieldset disabled>
-                    <label for="inputZip">Ijasah *pdf</label>
+                    <label for="inputZip">ijasah *pdf</label>
                     <div class="input-group input-file" name="ijasah">
                       <span class="input-group-btn">
                             <button class="btn btn-default btn-choose" type="button">Choose</button>
                       </span>
-                        <input type="text" class="form-control" value="<?php echo $record['ijasah'] ?>" placeholder='Choose a file...' />
+                        <input type="text" name="ijasah" class="form-control" value="<?php echo $record['ijasah'] ?>" placeholder='Choose a file...' />
                       <span class="input-group-btn">
                         <button class="btn btn-warning btn-reset" type="button">Reset</button>
                       </span>
                     </div>
-                  </fieldset>
                   <!-- COMPONENT END -->
                   <!--  -->
                   <!-- COMPONENT START -->
-                  <fieldset disabled>
                     <label for="inputZip">SKHU *pdf</label>
                     <div class="input-group input-file" name="skhu">
                       <span class="input-group-btn">
                         <button class="btn btn-default btn-choose" type="button">Choose</button>
                       </span>
-                        <input type="text" class="form-control" value="<?php echo $record['skhu'] ?>" placeholder='Choose a file...' />
+                        <input type="text" name="skhu" class="form-control" value="<?php echo $record['skhu'] ?>" placeholder='Choose a file...' />
                       <span class="input-group-btn">
                         <button class="btn btn-warning btn-reset" type="button">Reset</button>
                       </span>
                     </div>
-                  </fieldset>
                   <!-- COMPONENT END --> 
                 </div>
               </div>
@@ -135,21 +100,11 @@
 
               </div>
             </div>  
-          <?php echo form_close(); ?>
-            <div style="margin-top:20px; margin-left:15px; margin-right:15px;">
-              <button onclick="send('a')" class="btn btn-primary float-left">Edit Berkas</button>
-              <button onclick="send('b')" class="btn btn-primary float-right">Update foto</button>
-              <script>
-              function send(i) {
-                if(i=='a'){
-                  window.location.href='<?php echo base_url() ?>auth/edit_berkas';
-                }else{
-                  window.location.href='<?php echo base_url() ?>auth/edit_foto';
-                }
-                  
-              }
-              </script>
+
+            <div class="posisi_submit">
+              <button type="submit" name="tambah" value="upload" class="btn btn-primary float-right">Ubah</button>
             </div>
+          <?php echo form_close(); ?>
         </div>
       </div>
     </div>

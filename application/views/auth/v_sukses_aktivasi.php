@@ -10,8 +10,8 @@
       </div>
 
       <div class="cardaktivasi">
-
-          
+          <h1 style="text-align: center; margin-top:15px;">Akun anda telah AKTIF</h1>
+          <p style="text-align: center;">Silahkan <a href="<?php echo base_url() ?>web/login">Login!</a> untuk proses selanjutnya</p>
       </div>
         
         <!--/container-->

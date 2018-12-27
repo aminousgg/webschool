@@ -80,9 +80,6 @@ class Admin extends CI_Controller{
 	}
 
 	function index(){
-		//echo "admin broo";
-		//$data['user'] = $this->M_admin->tampil_data()->result();
-
 		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
 			
 			$where = array(

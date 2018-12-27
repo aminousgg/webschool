@@ -158,7 +158,7 @@ class Auth extends CI_Controller{
 		$this->db->where('email',$email);
 		$result=$this->db->update('biodata',$data);
 		if($result==true){
-			$this->session->set_flashdata('success_ubah', 'Berhasil Di Ubah');
+			$this->session->set_flashdata('success_bio', 'Berhasil Di Ubah');
 			redirect(base_url('auth/berkas'));
 		}else{
 			$this->session->set_flashdata('error', 'Gagal Mengubah');
@@ -173,6 +173,8 @@ class Auth extends CI_Controller{
 			$email=$this->session->userdata('user')['nama'];
 			$cek=$this->M_login->cek_login("berkas",array('email'=>$email))->num_rows();
 			$data['record'] = $this->M_user->edit_berkas($email)->row_array();
+			$data['ambil']=$this->M_user->edit_bio($email)->row_array();
+			// var_dump($data['bio']);die;
 			if($cek>0){
 				// echo "otw";
 				$this->load->view('auth/v_header_auth',$data);
@@ -215,6 +217,7 @@ class Auth extends CI_Controller{
 				$c = $this->upload_skhu($_POST);
 				$d = $this->upload_foto($_POST);
 				//var_dump($_POST); die;
+				$kode=rand(1000,9999);
 				$data = array(
 					'nisn'			=> $ambil["nisn"],
 					'email'			=> $ambil["email"],
@@ -223,7 +226,8 @@ class Auth extends CI_Controller{
 					'kk'			=> $a['file_name'],
 					'ijasah'		=> $b['file_name'],
 					'skhu'			=> $c['file_name'],
-					'pas_foto'		=> $d['file_name']
+					'pas_foto'		=> $d['file_name'],
+					'kode_daftar'	=> $kode
 				);
 				//var_dump($data); die;
 				$result=$this->db->insert('berkas',$data);
@@ -242,6 +246,88 @@ class Auth extends CI_Controller{
 			
 		}
 	}
+	public function edit_berkas(){
+		$email=$this->session->userdata('user')['nama'];
+		$data['judul']="Bio";
+		$data['record'] = $this->M_user->edit_berkas($email)->row_array();
+		$data['ambil']=$this->M_user->edit_bio($email)->row_array();
+		$this->load->view('auth/v_header_auth',$data);
+		$this->load->view('auth/edit_berkas',$data);
+	}
+
+	public function edit_berkas_in(){
+		$email=$this->session->userdata('user')['nama'];
+		$data = array(
+			'sekolah'		=> $this->input->post('asal_sekolah'),
+			'tahun_lulus'	=> $this->input->post('tahun_lulus')
+		);
+		$this->db->where('email',$email);
+		$result=$this->db->update('berkas',$data);
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil diupdate');
+			redirect(base_url('auth/berkas'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal Ditambah!');
+			redirect(base_url('auth/berkas'));
+		}
+	}
+
+	public function edit_foto(){
+		$email=$this->session->userdata('user')['nama'];
+		$data['judul']="Bio";
+		$data['record'] = $this->M_user->edit_berkas($email)->row_array();
+		$data['ambil']=$this->M_user->edit_bio($email)->row_array();
+		$this->load->view('auth/v_header_auth',$data);
+		$this->load->view('auth/edit_pas_foto',$data);
+	}
+	public function edit_foto_in(){
+		$email=$this->session->userdata('user')['nama'];
+		$config['upload_path']	 = './berkas/pas_foto';
+		$config['allowed_types'] = 'jpg|jpeg|png';
+		if(empty($_POST['file'])){
+			$config['file_name']	 = "foto_";
+		}else{
+			$config['file_name']	 = "foto_".$_POST['file'];
+		}
+		//var_dump($foto['file_name']); die;
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		$this->upload->do_upload('file');
+		$foto = $this->upload->data();
+
+		
+		$data = array(
+			'pas_foto'	=>  $foto['file_name']
+		);
+		$this->db->where('email',$email);
+		$this->db->update('berkas',$data);
+		
+		
+		$cek = $this->M_user->edit_berkas($email)->row_array();
+		//var_dump($cek['pas_foto']); die;
+		if($cek['pas_foto']=="foto_"){
+			$data = array(
+				'pas_foto'	=>  $this->input->post('foto')
+			);
+			$this->db->where('email',$email);
+			$result=$this->db->update('berkas',$data);
+			if($result==true){
+				$this->session->set_flashdata('success', 'Berhasil diupdate');
+				redirect(base_url('auth/berkas'));
+			}else{
+				$this->session->set_flashdata('error', 'Gagal Ditambah!');
+				redirect(base_url('auth/berkas'));
+			}
+		}else{
+			$this->session->set_flashdata('success', 'Berhasil diupdate');
+			redirect(base_url('auth/berkas'));
+		}
+		
+	}
+	public function check(){
+		
+	}
+
 	public function upload_kk($post){
 		$_POST=$post;
 		$config['upload_path'] 		= './berkas/pdf/kk';
