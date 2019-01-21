@@ -34,7 +34,7 @@
          ?>
         <!-- <li class="active"> -->
           <a href="<?php echo base_url().'Admin' ?>">
-            <i class="fa fa-dashboard"></i>Dashboard
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             
             <!-- <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -47,20 +47,28 @@
         </li>
 
         <?php if($judul=="Pendaftaran"){
-                echo "<li class='active'>";
+                echo "<li class='treeview active'>";
               }else{
-                echo "<li class=''>";
+                echo "<li class='treeview'>";
               }
 
          ?>
-        <!-- <li class=""> -->
-          <a href="<?php echo base_url().'Admin/pendaftaran' ?>">
+          <a href="#">
             <i class="fa fa-users"></i>
             <span>Pendaftar</span>
             <span class="pull-right-container">
-              <span class="label label-primary pull-right"></span>
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+          <ul class="treeview-menu">
+            <?php if($judul=="Status"){ ?>
+              <li class="active"><a href="<?php echo base_url() ?>admin/status_auth"><i class="fa fa-circle-o"></i>Status Auth</a></li>
+            <?php }else{ ?>
+              <li><a href="<?php echo base_url() ?>admin/status_auth"><i class="fa fa-circle-o"></i>Status Auth</a></li>
+            <?php } ?>
+              <li><a href="<?php echo base_url() ?>admin/biodata"><i class="fa fa-circle-o"></i>Biodata</a></li>
+            <li><a href="<?php echo base_url() ?>admin/berkas"><i class="fa fa-circle-o"></i>berkas</a></li>
+          </ul>
         </li>
 
         <?php if($judul=="Halaman news"){

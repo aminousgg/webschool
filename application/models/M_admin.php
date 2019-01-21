@@ -36,7 +36,15 @@ class M_admin extends CI_Model{
 
 		return $this->db->get_where('pendaftaran',array('id'=>$id));
 	}
-
+	function tampil_auth(){
+		return $this->db->get('auth');
+	}
+	function tampil_bio(){
+		return $this->db->get('biodata');
+	}
+	function tampil_berkas(){
+		return $this->db->get('berkas');
+	}
 	//===============================================
 	function tampil_contact(){
 		return $this->db->get('contact');

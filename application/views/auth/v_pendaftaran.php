@@ -33,7 +33,7 @@
                                     swal({
                                         type: "'.'error'.'",
                                         title: "'.$this->session->flashdata('error').'",
-                                        text: "'.'Mohon Maaf! Hanya Email berdomain .ac.id dan .edu yang bisa Mendaftar'.'",
+                                        text: "'.'Mohon Maaf! Hanya Email berdomain gmail.com dan yahoo.com yang bisa Mendaftar'.'",
                                         timer: 10000,
                                         customClass: "'.'animated bounceIn'.'",
                                         })

@@ -5,7 +5,7 @@
             swal({
               type: "'.'error'.'",
               title: "'.$this->session->flashdata('error').'",
-              text: "'.'Mohon Maaf! Hanya Email berdomain .ac.id dan .edu yang bisa Mendaftar'.'",
+              text: "'.'Gagal Mengubah data'.'",
               timer: 10000,
               customClass: "'.'animated bounceIn'.'",
             })
@@ -17,7 +17,7 @@
             swal({
               type: "'.'success'.'",
               title: "'.$this->session->flashdata('success').'",
-              text: "'.'Silahkan Cek Email Untuk Aktivasi Akun'.'",
+              text: "'.'berhasil'.'",
               customClass: "'.'animated bounceIn'.'",
             })
             </script>';
@@ -45,7 +45,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title"></h3>
-              <a href="<?php echo base_url().'Report_pdf/pdf_pendaftaran' ?>"> <img src="<?php echo base_url().'assets_lte/tool_icon/print.png' ?>"> </a>
+              <!-- <a href="<?php //echo base_url().'Report_pdf/pdf_pendaftaran' ?>"> <img src="<?php //echo base_url().'assets_lte/tool_icon/print.png' ?>"> </a> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -53,14 +53,12 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama</th>
-                  <th>TTL</th>
-                  <th>Alamat</th>
-                  <th>Asal Sekolah</th>
-                  <th>Thn lulus</th>
-                  <th>User Name</th>
+                  <th>Email</th>
+                  <th>NISN</th>
+                  <th>Sekolah</th>
+                  <th>Tahun Lulus</th>
+                  <th>Pas_foto</th>
                   <th>Kode</th>
-                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,16 +71,15 @@
                   <!-- <th>&bnsp;</th>
                   <th>&bnsp;</th> -->
                   <td><?php echo $no++ ?></td>
-                  <td><?php echo $u->nama ?></td>
-                  <td><?php echo $u->tempat_lahir ?>/<?php echo $u->tgl_lahir ?></td>
-                  <td><?php echo $u->alamat ?></td>
-                  <td><?php echo $u->asal_sekolah ?></td>
+                  <td><?php echo $u->email ?></td>
+                  <td><?php echo $u->nisn ?></td>
+                  <td><?php echo $u->sekolah ?></td>
                   <td><?php echo $u->tahun_lulus ?></td>
-                  <td><?php echo $u->username ?></td>
+                  <td><img src="<?php echo base_url().'berkas/pas_foto' ?><?php echo $u->pas_foto ?>" width="40" height="40" class="img-responsive"></td>
                   <td><?php echo $u->kode_daftar ?></td>
-                  <td>
-                    <button onclick="window.location.href='<?php echo base_url().'Admin/pendaftaran_edit/'.$u->id ?>' "> <img src="<?php echo base_url().'assets_lte/tool_icon/edit.png' ?>"> </button> 
 
+                  <td>
+                    <!-- <button onclick="window.location.href='<?php //echo base_url().'Admin/pendaftaran_edit/'.$u->id ?>' "> </button>  -->
                     <button onclick="make()"> <img src="<?php echo base_url().'assets_lte/tool_icon/delete.png' ?>"> </button> 
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>
                     <script>
@@ -98,7 +95,7 @@
                           cancelButtonText: 'Batal'
                         }).then((result) => {
                             if (result.value) {
-                              window.location = "<?php echo base_url().'Admin/pendaftaran_hapus/'.$u->id ?>";
+                              window.location = "<?php echo base_url().'Admin/biodata_hapus/'.$u->id ?>";
                             }
                         })
                       }
@@ -110,14 +107,12 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Nama</th>
-                  <th>TTL</th>
-                  <th>Alamat</th>
-                  <th>Asal Sekolah</th>
-                  <th>Thn lulus</th>
-                  <th>User Name</th>
+                  <th>Email</th>
+                  <th>NISN</th>
+                  <th>Sekolah</th>
+                  <th>Tahun Lulus</th>
+                  <th>Pas_foto</th>
                   <th>Kode</th>
-                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

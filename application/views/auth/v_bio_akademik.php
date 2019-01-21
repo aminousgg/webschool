@@ -106,7 +106,7 @@
                   <!-- COMPONENT END -->
                   <!--  -->
                   <!-- COMPONENT START -->
-                    <label for="inputZip">Upload ijasah (tampak depan & belakang) *pdf</label>
+                    <label for="inputZip">Upload ijasah *pdf</label>
                     <div class="input-group input-file" name="ijasah">
                       <span class="input-group-btn">
                             <button class="btn btn-default btn-choose" type="button">Choose</button>

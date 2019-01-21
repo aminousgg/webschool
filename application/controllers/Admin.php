@@ -389,6 +389,77 @@ class Admin extends CI_Controller{
 		}
 		
 	}
+	public function status_auth(){
+
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+		   $data['user'] = $this->M_admin->tampil_auth()->result();	
+		   $data['judul'] = "Status";
+
+		   $data['usr']=$this->session->userdata('admin')["nama"];
+
+		   $this->load->view('admin/v_header',$data);
+		   $this->load->view('admin/v_aside',$data);
+		   $this->load->view('admin/v_tampil_statusauth',$data);
+		   $this->load->view('admin/v_footer',$data);
+	   }else{
+		   $this->load->view('admin/v_admin_login',$data);
+	   }	
+	   
+   }
+   public function statusauth_hapus($id){
+		$result=$this->db->delete('auth',array('id'=>$id));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Hapus');
+			redirect(base_url('admin/status_auth'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal menghapus');
+			redirect(base_url('admin/status_auth'));
+		}
+	//redirect('admin/pendaftaran');
+	}
+
+	public function biodata(){
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['user'] = $this->M_admin->tampil_bio()->result();	
+			$data['judul'] = "Bio";
+ 
+			$data['usr']=$this->session->userdata('admin')["nama"];
+ 
+			$this->load->view('admin/v_header',$data);
+			$this->load->view('admin/v_aside',$data);
+			$this->load->view('admin/v_tampil_bio',$data);
+			$this->load->view('admin/v_footer',$data);
+		}else{
+			$this->load->view('admin/v_admin_login',$data);
+		}
+	}
+	public function biodata_hapus($id){
+		$result=$this->db->delete('biodata',array('id'=>$id));
+		if($result==true){
+			$this->session->set_flashdata('success', 'Berhasil di Hapus');
+			redirect(base_url('admin/biodata'));
+		}else{
+			$this->session->set_flashdata('error', 'Gagal menghapus');
+			redirect(base_url('admin/biodata'));
+		}
+	//redirect('admin/pendaftaran');
+	}
+	public function berkas(){
+		if($this->session->userdata('admin')["status"] == "login" && $this->session->userdata('admin')["level"]=="admin"){
+			$data['user'] = $this->M_admin->tampil_berkas()->result();	
+			$data['judul'] = "berkas";
+ 
+			$data['usr']=$this->session->userdata('admin')["nama"];
+ 
+			$this->load->view('admin/v_header',$data);
+			$this->load->view('admin/v_aside',$data);
+			$this->load->view('admin/v_tampil_berkas',$data);
+			$this->load->view('admin/v_footer',$data);
+		}else{
+			$this->load->view('admin/v_admin_login',$data);
+		}
+	}
+
 
 	public function pendaftaran_edit()
 	{
@@ -433,18 +504,7 @@ class Admin extends CI_Controller{
 		}
 		//redirect('admin/pendaftaran');
 	}
-	public function pendaftaran_hapus($id){
-		$result=$this->db->delete('pendaftaran',array('id'=>$id));
-		if($result==true){
-			$this->session->set_flashdata('success', 'Berhasil di Hapus');
-			redirect(base_url('admin/pendaftaran'));
-		}else{
-			$this->session->set_flashdata('error', 'Gagal menghapus');
-			redirect(base_url('admin/pendaftaran'));
-		}
-		//redirect('admin/pendaftaran');
-	}
-
+	
 
 //==================================================VIEW DISPLAY CONTACT======================================
 	public function contact(){
